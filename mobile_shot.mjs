@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer';
+import fs from 'node:fs';
+const [, , url, label] = process.argv;
+const OUT_DIR = 'temporary screenshots';
+fs.mkdirSync(OUT_DIR, { recursive: true });
+const browser = await puppeteer.launch();
+const page = await browser.newPage();
+await page.setViewport({ width: 390, height: 844, isMobile: true, deviceScaleFactor: 2 });
+await page.goto(url, { waitUntil: 'networkidle0' });
+await page.screenshot({ path: `${OUT_DIR}/mobile-${label}.png`, fullPage: true });
+await browser.close();
+console.log('done');
