@@ -161,6 +161,8 @@
 <body class="font-body text-ink antialiased pb-[68px] lg:pb-0">
 <noscript><style>.reveal, .hero-in { opacity: 1 !important; transform: none !important; }</style></noscript>
 
+<div id="top"></div>
+
 <!-- Emergency banner -->
 <div class="sticky top-0 z-50 bg-urgent text-white">
   <a href="tel:000" class="focus-ring flex items-center justify-center gap-2 px-4 py-2.5 text-sm sm:text-base font-medium hover:bg-urgentDk transition-colors">
@@ -264,7 +266,7 @@
   </div>
 </div>
 
-<main id="top">
+<main>
 
   <!-- Hero -->
   <section class="relative overflow-hidden">
@@ -374,12 +376,9 @@
     <p class="text-ink/60 mb-8 max-w-xl">Seven steps, from walking in to going home.</p>
 
     <div id="visitStepper" class="max-w-2xl">
-      <!-- Pulse track -->
+      <!-- Timeline track -->
       <div class="relative h-12 sm:h-14 mb-1">
-        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 720 56" preserveAspectRatio="none" fill="none" aria-hidden="true">
-          <path d="M0,28 L88,28 L100,12 L112,44 L124,8 L136,28 L208,28 L220,12 L232,44 L244,8 L256,28 L328,28 L340,12 L352,44 L364,8 L376,28 L448,28 L460,12 L472,44 L484,8 L496,28 L568,28 L580,12 L592,44 L604,8 L616,28 L720,28"
-            stroke="#D9E3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        </svg>
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-line" aria-hidden="true"></div>
         <div class="relative h-full flex items-center justify-between">
           <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="0" aria-label="Step 1: Arrive">1</button>
           <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="1" aria-label="Step 2: Register">2</button>
@@ -392,20 +391,23 @@
       </div>
 
       <!-- Tile -->
-      <div class="relative bg-white border border-line rounded-2xl shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-6 sm:p-8 mt-5 overflow-hidden">
-        <div id="visitTileIcon" class="absolute -right-4 -top-4 sm:-right-4 sm:-top-4 w-20 h-20 sm:w-36 sm:h-36 text-teal900/[0.09] z-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="relative rounded-2xl shadow-[0_10px_28px_-10px_rgba(30,69,63,0.35)] p-6 sm:p-8 mt-5 overflow-hidden min-h-[340px] sm:min-h-[300px] flex flex-col justify-end">
+        <img id="visitTileImg" src="brand_assets/Arrive.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-transparent" aria-hidden="true"></div>
+
         <div id="visitTileContent" class="visit-tile-content relative z-10">
-          <p class="text-sm text-ink/45" id="visitCounter">Step 1 of 7</p>
-          <h3 class="font-display font-bold text-xl sm:text-2xl text-ink mt-1" id="visitTitle">Arrive</h3>
-          <p class="text-ink/65 mt-2 max-w-md" id="visitDesc">Walk in any time we're open — no appointment needed. We register new patients until 9pm.</p>
-          <p class="text-sm text-teal900 bg-mint rounded-lg px-4 py-3 mt-4 max-w-md" id="visitTip"><span class="font-medium">Good to know:</span> life-threatening? Call 000 instead of coming to SWIFT.</p>
+          <p class="text-sm text-white/60" id="visitCounter">Step 1 of 7</p>
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-white mt-1" id="visitTitle">Arrive</h3>
+          <p class="text-white/80 mt-2 max-w-md" id="visitDesc">Walk in any time we're open — no appointment needed. We register new patients until 9pm.</p>
+          <p class="text-sm text-teal900 bg-white/95 rounded-lg px-4 py-3 mt-4 max-w-md" id="visitTip"><span class="font-medium">Good to know:</span> life-threatening? Call 000 instead of coming to SWIFT.</p>
         </div>
 
         <div class="relative z-10 flex items-center justify-between mt-6">
-          <button type="button" id="visitPrev" class="focus-ring spring inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-ink/40 hover:text-teal700 hover:border-teal500 transition-[transform,color,border-color] duration-300 active:scale-[0.94] disabled:opacity-30 disabled:pointer-events-none" aria-label="Previous step">
+          <button type="button" id="visitPrev" class="focus-ring spring inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/40 text-white/70 hover:text-white hover:border-white/70 transition-[transform,color,border-color] duration-300 active:scale-[0.94] disabled:opacity-30 disabled:pointer-events-none" aria-label="Previous step">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button type="button" id="visitNext" class="focus-ring spring inline-flex items-center justify-center w-10 h-10 rounded-full bg-teal700 text-white hover:bg-teal600 transition-[transform,background-color] duration-300 active:scale-[0.94]" aria-label="Next step">
+          <button type="button" id="visitNext" class="focus-ring spring inline-flex items-center justify-center w-10 h-10 rounded-full bg-teal600 text-white hover:bg-teal500 transition-[transform,background-color] duration-300 active:scale-[0.94] shadow-[0_8px_20px_-6px_rgba(0,0,0,0.5)]" aria-label="Next step">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -879,22 +881,21 @@
   })();
 
   (function () {
-    var ICON_ATTRS = 'width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"';
     var steps = [
       { title: 'Arrive', desc: "Walk in any time we're open — no appointment needed. We register new patients until 9pm.", tip: 'Life-threatening? Call 000 instead of coming to SWIFT.',
-        icon: '<svg ' + ICON_ATTRS + '><path d="M6 3h9l3 3v15H6V3Z"/><circle cx="15" cy="12" r=".6" fill="currentColor" stroke="none"/><path d="M2 10l4 2-4 2"/></svg>' },
+        image: 'brand_assets/Arrive.jpeg', pos: '75% 35%' },
       { title: 'Register', desc: 'Reception takes your details and Medicare card, and explains our fees before you’re seen.', tip: 'Bring a debit or credit card — SWIFT is cashless.',
-        icon: '<svg ' + ICON_ATTRS + '><path d="M8.5 3.5h7v2.5h-7z"/><rect x="5.5" y="4.5" width="13" height="17" rx="1.4"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4"/></svg>' },
+        image: 'brand_assets/Register.jpeg', pos: '75% 0%' },
       { title: 'Triage', desc: 'A nurse checks how urgent your condition is. The most unwell patients are seen first, so waiting times vary.', tip: 'Tell staff straight away if you feel worse while you wait.',
-        icon: '<svg ' + ICON_ATTRS + '><circle cx="12" cy="12" r="9"/><path d="M6.5 12h2.3l1.3-3 2 6 1.3-3h4.6"/></svg>' },
+        image: 'brand_assets/Triage.jpeg', pos: '80% 0%' },
       { title: 'See the doctor', desc: "An emergency doctor examines you, explains what's going on, and what happens next.", tip: 'It helps to know when your symptoms started.',
-        icon: '<svg ' + ICON_ATTRS + '><path d="M7 3v6a4 4 0 0 0 8 0V3"/><path d="M9.5 14v1.5a5 5 0 0 0 10 0V13"/><circle cx="19.5" cy="10.5" r="1.5"/></svg>' },
+        image: 'brand_assets/See_Doctor.jpeg', pos: '70% 25%' },
       { title: 'Tests & imaging', desc: 'X-ray, CT and ultrasound are available on site, along with blood tests, if you need them.', tip: 'Most scans are bulk-billed with a valid Medicare card.',
-        icon: '<svg ' + ICON_ATTRS + '><path d="M5 8V5h3M19 8V5h-3M5 16v3h3M19 16v3h-3"/><path d="M5 12h14"/></svg>' },
+        image: 'brand_assets/Tests.jpeg', pos: '65% 30%' },
       { title: 'Treatment', desc: 'Treatment might be a cast or splint, stitches, a drip or medicine — whatever your visit needs.', tip: 'Tell us about any allergies or medicines you’re taking.',
-        icon: '<svg ' + ICON_ATTRS + '><rect x="7.5" y="9.5" width="9" height="5" rx="2.5" transform="rotate(45 12 12)"/><circle cx="10.2" cy="10.2" r=".4" fill="currentColor" stroke="none"/><circle cx="13.8" cy="13.8" r=".4" fill="currentColor" stroke="none"/></svg>' },
+        image: 'brand_assets/Treatment.jpeg', pos: '75% 15%' },
       { title: 'Going home', desc: 'We explain how to care for yourself at home, and what follow-up you need, if any.', tip: 'Same problem within 24 hours? That visit is bulk-billed.',
-        icon: '<svg ' + ICON_ATTRS + '><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v10.5h12V10"/><path d="M10 20.5v-6h4v6"/></svg>' },
+        image: 'brand_assets/Go_Home.jpeg', pos: '75% 15%' },
     ];
 
     var stepper = document.getElementById('visitStepper');
@@ -902,7 +903,7 @@
 
     var nodes = Array.prototype.slice.call(stepper.querySelectorAll('.visit-node'));
     var content = document.getElementById('visitTileContent');
-    var iconEl = document.getElementById('visitTileIcon');
+    var imgEl = document.getElementById('visitTileImg');
     var counterEl = document.getElementById('visitCounter');
     var titleEl = document.getElementById('visitTitle');
     var descEl = document.getElementById('visitDesc');
@@ -936,7 +937,9 @@
       titleEl.textContent = s.title;
       descEl.textContent = s.desc;
       tipEl.innerHTML = '<span class="font-medium">Good to know:</span> ' + s.tip;
-      iconEl.innerHTML = s.icon;
+      imgEl.src = s.image;
+      imgEl.alt = s.title;
+      imgEl.style.objectPosition = s.pos || '50% 50%';
       prevBtn.disabled = current === 0;
       nextBtn.setAttribute('aria-label', current === steps.length - 1 ? 'Restart at step 1' : 'Next step');
     }
