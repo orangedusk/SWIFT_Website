@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request an appointment — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
+<meta name="description" content="Request an appointment at SWIFT Rouse Hill for a doctor consultation, iron infusion, physiotherapy or specialist review. Urgent illness or injury? Walk in, no appointment needed.">
+<link rel="icon" href="brand_assets/swift-icon-dark.png" type="image/png">
+
+<meta property="og:title" content="Request an appointment — SWIFT Emergency & Urgent Care">
+<meta property="og:description" content="Doctor consultations, iron infusions, physiotherapy and specialist reviews by appointment at SWIFT Rouse Hill.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#182524',
+          teal900:  '#1E453F',
+          teal700:  '#2C685E',
+          teal600:  '#377E71',
+          teal500:  '#4B9587',
+          tealGlow: '#6FB3A3',
+          paper:    '#F6F8F7',
+          mint:     '#EAF1EF',
+          line:     '#D9E3E0',
+          urgent:   '#B23A3A',
+          urgentDk: '#8C2C2C',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Analytics: replace G-XXXXXXXXXX with the client's real GA4 Measurement ID before launch -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  body { background: #F6F8F7; }
+  ::selection { background: #6FB3A3; color: #182524; }
+  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-in { opacity: 0; animation: heroIn .8s cubic-bezier(.22,1,.36,1) forwards; }
+  .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+
+  /* Mobile menu */
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  #menuBtn [data-bar="top"] { transform: translateY(-5px); }
+  #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
+  #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
+  #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
+  #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
+
+  /* Service picker tiles */
+  .service-tile { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .2s ease, background-color .2s ease; }
+  .service-tile:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(30,69,63,0.28); }
+  .service-tile:active { transform: scale(0.98); }
+  .service-input:focus-visible + .service-tile { outline: 2px solid #4B9587; outline-offset: 2px; }
+  .service-input:checked + .service-tile { border-color: #2C685E; background: #EAF1EF; box-shadow: inset 0 0 0 1px #2C685E; }
+  .service-tile .tick { opacity: 0; transform: scale(.6); transition: opacity .2s ease, transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .service-input:checked + .service-tile .tick { opacity: 1; transform: scale(1); }
+  .service-input:checked + .service-tile .tile-icon { background: #2C685E; color: #fff; }
+
+  /* Segmented choices */
+  .seg-input:checked + .seg { background: #2C685E; color: #fff; border-color: #2C685E; }
+  .seg-input:focus-visible + .seg { outline: 2px solid #4B9587; outline-offset: 2px; }
+  .seg { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+  .seg:hover { border-color: #4B9587; }
+  .seg:active { transform: scale(0.97); }
+
+  /* Text fields */
+  .field { transition: border-color .2s ease, box-shadow .2s ease; }
+  .field:hover { border-color: #4B9587; }
+  .field:focus { outline: none; border-color: #2C685E; box-shadow: 0 0 0 3px rgba(75,149,135,0.25); }
+  .field[aria-invalid="true"] { border-color: #B23A3A; }
+  .field[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px rgba(178,58,58,0.18); }
+
+  /* Success state */
+  @keyframes popIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+  .pop-in { animation: popIn .6s cubic-bezier(.22,1,.36,1) forwards; }
+</style>
+</head>
+
+<body class="font-body text-ink antialiased pb-[68px] lg:pb-0">
+<noscript><style>.hero-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<div id="top"></div>
+
+<!-- Emergency banner -->
+<div class="sticky top-0 z-50 bg-urgent text-white">
+  <a href="tel:000" class="focus-ring flex items-center justify-center gap-2 px-4 py-2.5 text-sm sm:text-base font-medium hover:bg-urgentDk transition-colors">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="shrink-0" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Life-threatening emergency? Call <strong class="font-bold">000</strong> now.</span>
+  </a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-[41px] sm:top-[45px] z-40 bg-paper/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded">
+      <img src="brand_assets/swift-icon-dark.png" alt="" class="h-9 w-9" aria-hidden="true">
+      <span class="font-display font-bold text-lg tracking-tight text-ink">SWIFT</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[15px]">
+      <a href="index.html#triage" class="hover:text-teal700 focus-ring rounded">Find care</a>
+      <a href="index.html#services" class="hover:text-teal700 focus-ring rounded">Services</a>
+      <a href="index.html#fees" class="hover:text-teal700 focus-ring rounded">Fees</a>
+      <a href="index.html#location" class="hover:text-teal700 focus-ring rounded">Location</a>
+      <a href="index.html#faq" class="hover:text-teal700 focus-ring rounded">FAQs</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:0288599099" class="hidden sm:inline-flex items-center gap-2 text-[15px] font-medium text-teal900 hover:text-teal700 focus-ring rounded">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        (02) 8859 9099
+      </a>
+      <button id="menuBtn" type="button" class="lg:hidden focus-ring relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-mint active:bg-line" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="top"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-opacity duration-200" data-bar="mid"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.22,1,.36,1)] border-t border-transparent">
+    <div class="overflow-hidden">
+      <nav class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-1 text-[15px]">
+        <a href="index.html#triage" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Find care</a>
+        <a href="index.html#services" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Services</a>
+        <a href="index.html#fees" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Fees</a>
+        <a href="index.html#location" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Location</a>
+        <a href="index.html#faq" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">FAQs</a>
+        <div class="border-t border-line mt-2 pt-3 flex flex-col gap-3 sm:hidden">
+          <a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile floating bottom bar -->
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+  <div class="grid grid-cols-4">
+    <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Call</span>
+    </a>
+    <a href="index.html#triage" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-[11px] font-medium">Find care</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Directions</span>
+    </a>
+    <button type="button" id="bottomMenuBtn" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="text-[11px] font-medium">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Page intro -->
+  <section class="relative overflow-hidden bg-mint/60 border-b border-line">
+    <svg class="absolute bottom-0 left-0 w-full h-10 opacity-60" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <path d="M0,20 L420,20 L432,6 L444,32 L456,2 L468,20 L720,20" stroke="#D9E3E0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-12 sm:pb-16">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
+        <span aria-hidden="true" class="mx-1.5">/</span>
+        <span class="text-ink/80" aria-current="page">Request an appointment</span>
+      </nav>
+      <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink max-w-2xl" style="animation-delay:.08s">
+        Request an appointment
+      </h1>
+      <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-xl" style="animation-delay:.2s">
+        For planned care like doctor consultations, iron infusions, physiotherapy and specialist reviews. Send us your details and we'll call to confirm a time.
+      </p>
+
+      <!-- Walk-in reminder: the key triage message on this page -->
+      <div class="hero-in mt-7 max-w-2xl flex items-start gap-3 rounded-2xl bg-white border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-4 sm:p-5" style="animation-delay:.32s">
+        <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="#2C685E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="text-[15px] leading-relaxed">
+          <p class="font-medium text-ink">Sick or injured today? You don't need an appointment.</p>
+          <p class="text-ink/65 mt-0.5">Walk in any time between 10am and 10pm, every day. <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Call (02) 8859 9099</a> to check the current wait.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + sidebar -->
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+    <div class="grid lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-start">
+
+      <div>
+        <!-- Online booking (Best Health Booking, synced with Bp Premier).
+             To go live: paste the embed code from Best Practice inside #bookingEmbedMount,
+             then set BOOKING_EMBED_ENABLED = true in the script at the bottom of this page.
+             While disabled, the request form below is shown instead. -->
+        <div id="bookingEmbed" class="hidden bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15),0_24px_48px_-24px_rgba(30,69,63,0.18)] p-5 sm:p-8">
+          <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Choose a time</h2>
+          <p class="text-sm text-ink/60 mt-1">Pick an available appointment and you'll get a confirmation straight away.</p>
+          <div id="bookingEmbedMount" class="mt-6 min-h-[480px]">
+            <!-- Best Health Booking embed code goes here -->
+          </div>
+          <p class="mt-6 pt-5 border-t border-line text-sm text-ink/60">
+            Can't find a time that works?
+            <button type="button" id="showRequestForm" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded active:text-teal900">Send us a request instead</button>
+            or call <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 focus-ring rounded">(02) 8859 9099</a>.
+          </p>
+        </div>
+
+        <form id="apptForm" novalidate class="bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15),0_24px_48px_-24px_rgba(30,69,63,0.18)] p-5 sm:p-8">
+
+          <!-- Service -->
+          <fieldset>
+            <legend class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">What would you like to book?</legend>
+            <p class="text-sm text-ink/60 mt-1">Choose one. You can tell us more further down.</p>
+            <p id="serviceError" class="hidden mt-3 text-sm font-medium text-urgent" role="alert">Choose a service so we know who to book you with.</p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3" id="serviceGroup">
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Doctor consultation" data-key="consult" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="20" cy="11" r="2" stroke="currentColor" stroke-width="1.7"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Doctor consultation</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">Follow-ups and non-urgent concerns</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Iron infusion" data-key="infusion" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3s5.5 6 5.5 10a5.5 5.5 0 0 1-11 0C6.5 9 12 3 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Iron infusion</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">Usually done in under an hour</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Physiotherapy" data-key="physio" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1.7"/><path d="M9 21l2.5-6.5L14 17v4M7 12l3-4.5h4l2.5 3.5L19 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Physiotherapy</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">Recovery after an injury or procedure</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Orthopaedic follow-up" data-key="ortho" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 5.5a2.5 2.5 0 1 0-3 3l10 10a2.5 2.5 0 1 0 3-3l-10-10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Orthopaedic follow-up</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">Fractures and joint injuries</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Cardiology review" data-key="cardiology" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 12h2.5l1.2-2 2 4 1.3-2H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Cardiology review</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">With our specialist cardiology team</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+
+              <label class="block h-full cursor-pointer">
+                <input type="radio" name="service" value="Something else" data-key="other" class="service-input sr-only">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-dashed border-line p-4 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">
+                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </span>
+                  <span class="pr-6">
+                    <span class="block font-medium text-ink">Something else</span>
+                    <span class="block text-sm text-ink/60 mt-0.5">Describe it in the notes below</span>
+                  </span>
+                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="border-t border-line my-8"></div>
+
+          <!-- Patient details -->
+          <fieldset>
+            <legend class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Patient details</legend>
+            <p class="text-sm text-ink/60 mt-1">If you're booking for a child, enter their name and date of birth.</p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-x-4 gap-y-5">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-ink mb-1.5">First name</label>
+                <input id="firstName" name="firstName" type="text" autocomplete="given-name" required class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px]" aria-describedby="firstNameError">
+                <p id="firstNameError" class="err hidden mt-1.5 text-sm text-urgent">Enter a first name.</p>
+              </div>
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-ink mb-1.5">Last name</label>
+                <input id="lastName" name="lastName" type="text" autocomplete="family-name" required class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px]" aria-describedby="lastNameError">
+                <p id="lastNameError" class="err hidden mt-1.5 text-sm text-urgent">Enter a last name.</p>
+              </div>
+              <div>
+                <label for="dob" class="block text-sm font-medium text-ink mb-1.5">Date of birth</label>
+                <input id="dob" name="dob" type="date" autocomplete="bday" required class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px]" aria-describedby="dobError">
+                <p id="dobError" class="err hidden mt-1.5 text-sm text-urgent">Enter a date of birth in the past.</p>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-ink mb-1.5">Mobile number</label>
+                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] placeholder:text-ink/35" aria-describedby="phoneHint phoneError">
+                <p id="phoneHint" class="mt-1.5 text-sm text-ink/50">We'll call this number to confirm.</p>
+                <p id="phoneError" class="err hidden mt-1.5 text-sm text-urgent">Enter an Australian phone number, like 0412 345 678.</p>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="email" class="block text-sm font-medium text-ink mb-1.5">Email <span class="font-normal text-ink/50">(optional)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px]" aria-describedby="emailError">
+                <p id="emailError" class="err hidden mt-1.5 text-sm text-urgent">Check the email address. It should look like name@example.com.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 grid sm:grid-cols-2 gap-x-4 gap-y-5">
+              <div role="radiogroup" aria-labelledby="visitedLabel">
+                <p id="visitedLabel" class="text-sm font-medium text-ink mb-1.5">Visited SWIFT before?</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="cursor-pointer"><input type="radio" name="visited" value="Yes" class="seg-input sr-only"><span class="seg block text-center rounded-full border border-line bg-white px-4 py-2.5 text-sm font-medium">Yes</span></label>
+                  <label class="cursor-pointer"><input type="radio" name="visited" value="No" class="seg-input sr-only" checked><span class="seg block text-center rounded-full border border-line bg-white px-4 py-2.5 text-sm font-medium">No, first visit</span></label>
+                </div>
+              </div>
+              <div role="radiogroup" aria-labelledby="medicareLabel">
+                <p id="medicareLabel" class="text-sm font-medium text-ink mb-1.5">Valid Medicare card?</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="cursor-pointer"><input type="radio" name="medicare" value="Yes" class="seg-input sr-only" checked><span class="seg block text-center rounded-full border border-line bg-white px-4 py-2.5 text-sm font-medium">Yes</span></label>
+                  <label class="cursor-pointer"><input type="radio" name="medicare" value="No" class="seg-input sr-only"><span class="seg block text-center rounded-full border border-line bg-white px-4 py-2.5 text-sm font-medium">No</span></label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="border-t border-line my-8"></div>
+
+          <!-- Timing -->
+          <fieldset>
+            <legend class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">When suits you?</legend>
+            <p class="text-sm text-ink/60 mt-1">We're open 10am to 10pm, every day. We'll offer the closest time we have.</p>
+
+            <div class="mt-5 grid sm:grid-cols-[minmax(0,220px)_1fr] gap-x-4 gap-y-5 items-start">
+              <div>
+                <label for="date" class="block text-sm font-medium text-ink mb-1.5">Preferred date</label>
+                <input id="date" name="date" type="date" required class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px]" aria-describedby="dateError">
+                <p id="dateError" class="err hidden mt-1.5 text-sm text-urgent">Choose today or a later date.</p>
+              </div>
+              <div role="radiogroup" aria-labelledby="timeLabel">
+                <p id="timeLabel" class="text-sm font-medium text-ink mb-1.5">Preferred time</p>
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="cursor-pointer"><input type="radio" name="time" value="Morning (10am–1pm)" class="seg-input sr-only" checked><span class="seg block text-center rounded-xl border border-line bg-white px-2 py-2 text-sm font-medium leading-tight">Morning<span class="block text-xs font-normal opacity-70 mt-0.5">10am–1pm</span></span></label>
+                  <label class="cursor-pointer"><input type="radio" name="time" value="Afternoon (1pm–5pm)" class="seg-input sr-only"><span class="seg block text-center rounded-xl border border-line bg-white px-2 py-2 text-sm font-medium leading-tight">Afternoon<span class="block text-xs font-normal opacity-70 mt-0.5">1pm–5pm</span></span></label>
+                  <label class="cursor-pointer"><input type="radio" name="time" value="Evening (5pm–9pm)" class="seg-input sr-only"><span class="seg block text-center rounded-xl border border-line bg-white px-2 py-2 text-sm font-medium leading-tight">Evening<span class="block text-xs font-normal opacity-70 mt-0.5">5pm–9pm</span></span></label>
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="notes" class="block text-sm font-medium text-ink mb-1.5">Anything we should know? <span class="font-normal text-ink/50">(optional)</span></label>
+                <textarea id="notes" name="notes" rows="4" maxlength="1000" placeholder="For example, the reason for your visit or a referral you already have" class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] leading-relaxed placeholder:text-ink/35 resize-y"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="border-t border-line my-8"></div>
+
+          <!-- Consent + submit -->
+          <div>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input id="consent" name="consent" type="checkbox" required class="mt-0.5 w-5 h-5 shrink-0 rounded border-line text-teal700 accent-[#2C685E] focus-ring" aria-describedby="consentError">
+              <span class="text-sm text-ink/70 leading-relaxed">I agree to SWIFT contacting me about this request by phone, SMS or email, and to my details being stored securely for this purpose.</span>
+            </label>
+            <p id="consentError" class="err hidden mt-1.5 ml-8 text-sm text-urgent">Tick the box so we can contact you about your request.</p>
+
+            <div class="mt-7 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4">
+              <p class="text-sm text-ink/55">This is a request, not a confirmed booking.</p>
+              <button id="submitBtn" type="submit" class="focus-ring spring inline-flex items-center justify-center gap-2 rounded-full bg-teal700 hover:bg-teal600 hover:scale-[1.03] text-white font-medium px-7 py-3.5 transition-[transform,background-color] duration-300 active:scale-[0.97] shadow-[0_12px_28px_-12px_rgba(30,69,63,0.6)] disabled:opacity-60 disabled:pointer-events-none">
+                <span id="submitLabel">Send request</span>
+              </button>
+            </div>
+            <p id="formError" class="hidden mt-4 text-sm font-medium text-urgent" role="alert"></p>
+          </div>
+        </form>
+
+        <!-- Success state -->
+        <div id="apptSuccess" class="hidden bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15),0_24px_48px_-24px_rgba(30,69,63,0.18)] p-6 sm:p-10" tabindex="-1" aria-live="polite">
+          <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal700">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h2 class="mt-5 font-display font-bold text-2xl sm:text-3xl tracking-tight text-ink">Request sent</h2>
+          <p class="mt-2 text-ink/70 leading-relaxed max-w-lg">Thanks, <span id="successName"></span>. We've received your request for <span id="successService" class="font-medium text-ink"></span>. We'll call you on <span id="successPhone" class="font-medium text-ink"></span> to confirm a time.</p>
+          <p class="mt-4 text-sm text-ink/55">If your symptoms get worse before your appointment, walk in any time we're open. In a life-threatening emergency, call 000.</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="index.html" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 hover:scale-[1.03] text-white font-medium px-6 py-3 transition-[transform,background-color] duration-300 active:scale-[0.97]">Back to home</a>
+            <button type="button" id="anotherBtn" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium px-6 py-3 transition-[transform,background-color] duration-300 active:scale-[0.97]">Make another request</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6 lg:sticky lg:top-[132px]">
+        <div class="rounded-2xl bg-mint/60 border border-line p-5 sm:p-6">
+          <h2 class="font-display font-bold text-lg tracking-tight text-ink">What happens next</h2>
+          <ol class="mt-4 space-y-4">
+            <li class="flex gap-3">
+              <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-teal700 text-white text-sm font-semibold">1</span>
+              <p class="text-[15px] text-ink/75 leading-relaxed pt-0.5" data-step-request>You send your request with a preferred day and time.</p>
+              <p class="hidden text-[15px] text-ink/75 leading-relaxed pt-0.5" data-step-booking>You pick an available time that suits you.</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-white border border-teal700 text-teal900 text-sm font-semibold">2</span>
+              <p class="text-[15px] text-ink/75 leading-relaxed pt-0.5" data-step-request>Our team calls you during opening hours to confirm a time.</p>
+              <p class="hidden text-[15px] text-ink/75 leading-relaxed pt-0.5" data-step-booking>You get a confirmation with your appointment details.</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-white border border-teal700 text-teal900 text-sm font-semibold">3</span>
+              <p class="text-[15px] text-ink/75 leading-relaxed pt-0.5">Come in at your time. Bring photo ID, your Medicare card and any referral.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-6 space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="#2C685E" stroke-width="1.6"/></svg>
+            </span>
+            <div class="text-[15px]">
+              <p class="text-ink/60">Prefer to talk?</p>
+              <a href="tel:0288599099" class="font-medium text-teal900 hover:text-teal700 focus-ring rounded">(02) 8859 9099</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#2C685E" stroke-width="1.6"/><path d="M12 8v4.5l3 2" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <p class="text-[15px] text-ink/75">Open every day, 10am – 10pm</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="#2C685E" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="#2C685E" stroke-width="1.6"/></svg>
+            </span>
+            <p class="text-[15px] text-ink/75">G38, 32 Civic Way<br>Rouse Hill, NSW 2155</p>
+          </div>
+          <div class="border-t border-line pt-4">
+            <a href="index.html#fees" class="focus-ring inline-flex items-center gap-1.5 text-sm font-medium text-teal700 hover:text-teal900 rounded">
+              See fees
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative bg-ink text-white overflow-hidden">
+  <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
+      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <img src="brand_assets/swift-icon-white.png" alt="" class="h-8 w-8" aria-hidden="true">
+        <span class="font-display font-bold text-lg">SWIFT</span>
+      </div>
+      <p class="text-white/55 text-sm mt-4 max-w-sm leading-relaxed">
+        Emergency-physician-led urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
+      </p>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Explore</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="index.html#triage" class="hover:text-white focus-ring rounded">Find care</a></li>
+        <li><a href="index.html#services" class="hover:text-white focus-ring rounded">Services</a></li>
+        <li><a href="index.html#fees" class="hover:text-white focus-ring rounded">Fees</a></li>
+        <li><a href="index.html#location" class="hover:text-white focus-ring rounded">Location</a></li>
+        <li><a href="index.html#faq" class="hover:text-white focus-ring rounded">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Contact</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="tel:0288599099" class="hover:text-white focus-ring rounded">(02) 8859 9099</a></li>
+        <li><a href="mailto:info@swifteuc.com.au" class="hover:text-white focus-ring rounded">info@swifteuc.com.au</a></li>
+        <li>G38, 32 Civic Way, Rouse Hill NSW 2155</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
+      <p>© 2026 SWIFT Emergency & Urgent Care. All rights reserved.</p>
+      <p>Life-threatening emergency? Call 000.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Where form submissions are sent. Leave empty until a backend is chosen
+     (e.g. Formspree, a clinic CRM or practice-management webhook); while empty,
+     the form validates and shows the success state without sending anything. */
+  var APPT_FORM_ENDPOINT = '';
+
+  /* Set to true once the Best Health Booking embed code is pasted into #bookingEmbedMount.
+     The request form then becomes a fallback behind "Send us a request instead". */
+  var BOOKING_EMBED_ENABLED = false;
+
+  (function () {
+    if (!BOOKING_EMBED_ENABLED) return;
+    var embed = document.getElementById('bookingEmbed');
+    var form = document.getElementById('apptForm');
+    function useSteps(mode) {
+      document.querySelectorAll('[data-step-request]').forEach(function (el) { el.classList.toggle('hidden', mode !== 'request'); });
+      document.querySelectorAll('[data-step-booking]').forEach(function (el) { el.classList.toggle('hidden', mode !== 'booking'); });
+    }
+    embed.classList.remove('hidden');
+    form.classList.add('hidden');
+    useSteps('booking');
+    document.getElementById('showRequestForm').addEventListener('click', function () {
+      embed.classList.add('hidden');
+      form.classList.remove('hidden');
+      useSteps('request');
+      form.querySelector('.service-input').focus();
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var bottomBtn = document.getElementById('bottomMenuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    var triggers = bottomBtn ? [btn, bottomBtn] : [btn];
+
+    function closeMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (bottomBtn) bottomBtn.classList.remove('text-teal700');
+      menu.classList.remove('is-open');
+    }
+    function openMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'true'); });
+      if (bottomBtn) bottomBtn.classList.add('text-teal700');
+      menu.classList.add('is-open');
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+    });
+    menu.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  (function () {
+    var form = document.getElementById('apptForm');
+    var success = document.getElementById('apptSuccess');
+    if (!form) return;
+
+    var submitBtn = document.getElementById('submitBtn');
+    var submitLabel = document.getElementById('submitLabel');
+    var formError = document.getElementById('formError');
+    var serviceError = document.getElementById('serviceError');
+
+    function isoDate(d) {
+      var m = String(d.getMonth() + 1).padStart(2, '0');
+      var day = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + m + '-' + day;
+    }
+    var today = isoDate(new Date());
+    form.date.min = today;
+    form.dob.max = today;
+
+    // Preselect a service from ?service=infusion etc., so other pages can deep-link
+    try {
+      var key = new URLSearchParams(window.location.search).get('service');
+      if (key) {
+        var match = form.querySelector('.service-input[data-key="' + key.replace(/[^a-z]/g, '') + '"]');
+        if (match) match.checked = true;
+      }
+    } catch (e) { /* URLSearchParams unsupported: no preselection */ }
+
+    var checks = {
+      firstName: function (v) { return v.trim().length > 0; },
+      lastName: function (v) { return v.trim().length > 0; },
+      dob: function (v) { return v !== '' && v <= today; },
+      phone: function (v) {
+        var digits = v.replace(/[\s()+-]/g, '');
+        return /^(0[2-478]\d{8}|61[2-478]\d{8})$/.test(digits);
+      },
+      email: function (v) { return v.trim() === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+      date: function (v) { return v !== '' && v >= today; },
+    };
+
+    function setFieldState(name, ok) {
+      var input = form[name];
+      var err = document.getElementById(name + 'Error');
+      input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (err) err.classList.toggle('hidden', ok);
+    }
+
+    Object.keys(checks).forEach(function (name) {
+      form[name].addEventListener('blur', function () {
+        if (form[name].value !== '' || form[name].getAttribute('aria-invalid') === 'true') {
+          setFieldState(name, checks[name](form[name].value));
+        }
+      });
+      form[name].addEventListener('input', function () {
+        if (form[name].getAttribute('aria-invalid') === 'true' && checks[name](form[name].value)) {
+          setFieldState(name, true);
+        }
+      });
+    });
+
+    form.querySelectorAll('.service-input').forEach(function (r) {
+      r.addEventListener('change', function () { serviceError.classList.add('hidden'); });
+    });
+    form.consent.addEventListener('change', function () {
+      if (form.consent.checked) document.getElementById('consentError').classList.add('hidden');
+    });
+
+    function validate() {
+      var firstBad = null;
+      var service = form.querySelector('.service-input:checked');
+      serviceError.classList.toggle('hidden', !!service);
+      if (!service) firstBad = form.querySelector('.service-input');
+
+      Object.keys(checks).forEach(function (name) {
+        var ok = checks[name](form[name].value);
+        setFieldState(name, ok);
+        if (!ok && !firstBad) firstBad = form[name];
+      });
+
+      var consentOk = form.consent.checked;
+      document.getElementById('consentError').classList.toggle('hidden', consentOk);
+      if (!consentOk && !firstBad) firstBad = form.consent;
+      return firstBad;
+    }
+
+    function showSuccess(data) {
+      document.getElementById('successName').textContent = data.firstName;
+      document.getElementById('successService').textContent = data.service.toLowerCase();
+      document.getElementById('successPhone').textContent = data.phone;
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      success.classList.add('pop-in');
+      success.focus({ preventScroll: true });
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      formError.classList.add('hidden');
+      var firstBad = validate();
+      if (firstBad) {
+        firstBad.focus();
+        if (firstBad.classList.contains('service-input')) {
+          document.getElementById('serviceGroup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+      if (!APPT_FORM_ENDPOINT) {
+        showSuccess(data);
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitLabel.textContent = 'Sending…';
+      fetch(APPT_FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (typeof gtag === 'function') gtag('event', 'appointment_request', { service: data.service });
+        showSuccess(data);
+      }).catch(function () {
+        formError.textContent = "Your request didn't send. Check your connection and try again, or call us on (02) 8859 9099.";
+        formError.classList.remove('hidden');
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitLabel.textContent = 'Send request';
+      });
+    });
+
+    document.getElementById('anotherBtn').addEventListener('click', function () {
+      form.reset();
+      form.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+      success.classList.add('hidden');
+      success.classList.remove('pop-in');
+      form.classList.remove('hidden');
+      form.querySelector('.service-input').focus();
+    });
+  })();
+</script>
+</body>
+</html>

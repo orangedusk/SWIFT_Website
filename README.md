@@ -44,7 +44,8 @@ brand_assets/         Logo marks and real clinic photography
 
 - **Google Analytics**: `G-XXXXXXXXXX` in `index.html` is a placeholder — swap in the real GA4 Measurement ID
 - **Nearby ED wait times**: the "Weighing up where to go?" section shows sample data. No public real-time NSW Health API was identified — needs a data source decision
-- **Booking**: "Request appointment" and "Meet the full team" / "See detailed pricing" links currently point to pages on the *current* live site (`swiftemergencycare.com.au`) as stand-ins until this site has its own hosted versions
+- **Booking**: "Request appointment" now goes to `request-appointment.html`. The clinic uses Best Practice (Bp Premier), so live online booking should come from Best Health Booking: paste its embed code into `#bookingEmbedMount` and set `BOOKING_EMBED_ENABLED = true`. Until then the page shows a request form, which only shows a confirmation and sends nothing until `APPT_FORM_ENDPOINT` is set (the destination must be suitable for health information)
+- **Other old-site links**: "Meet the full team" / "See detailed pricing" and the service tiles still point to the *current* live site (`swiftemergencycare.com.au`) as stand-ins
 - **Services list**: reflects the current site's services, with radiology and dental separated out as co-located independent providers per the new brief. Final add/remove list from the client is still pending
 - **Gallery**: two of three "From SWIFT" cards use real clinic photos; the third (an article teaser) has no real post behind it yet
 
