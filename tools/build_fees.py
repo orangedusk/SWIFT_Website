@@ -5,14 +5,14 @@ BULK = '<span class="inline-flex rounded-full bg-mint text-teal900 text-sm font-
 EXTRA = '<span class="text-[15px] text-ink/70">Extra charges</span>'
 
 def price(amount, medicare=True):
-    tail = ' <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span>' if medicare else ''
+    tail = ' <span class="block sm:inline text-sm font-normal text-ink/65">+ Medicare</span>' if medicare else ''
     return '<span class="font-display font-bold text-lg text-ink tabular-nums">' + amount + '</span>' + tail
 
 def rows(items):
     out = []
     for i, (label, sub, cost) in enumerate(items):
         border = '' if i == len(items) - 1 else ' border-b border-line'
-        subhtml = '<span class="block text-sm text-ink/55 mt-0.5">' + sub + '</span>' if sub else ''
+        subhtml = '<span class="block text-sm text-ink/65 mt-0.5">' + sub + '</span>' if sub else ''
         out.append('          <tr class="align-top' + border + '">\n'
                    '            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">' + label + '</span>' + subhtml + '</th>\n'
                    '            <td class="text-right py-4 whitespace-nowrap">' + cost + '</td>\n          </tr>')
@@ -26,13 +26,13 @@ def table(tid, heading, intro, items, caption):
         <div class="mt-4 %s px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">%s</caption>
-            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
+            <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
             <tbody>
 %s
             </tbody>
           </table>
         </div>
-      </section>''' % (tid, heading, ('<p class="text-ink/60 mt-1">' + intro + '</p>') if intro else '', CARD, caption, rows(items))
+      </section>''' % (tid, heading, ('<p class="text-ink/70 mt-1">' + intro + '</p>') if intro else '', CARD, caption, rows(items))
 
 emergency = table('emergency', 'Emergency &amp; urgent care', 'Walk-in visits for illness and injury.', [
     ('First visit', 'SWIFT facility fee', price('$396')),
@@ -56,17 +56,17 @@ wound = table('wound', 'Wound care clinic', None, [
 radiology = '''
       <section id="radiology" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Scans and imaging</h2>
-        <p class="text-ink/60 mt-1">Provided on-site by Imaging Specialists, an independent practice. Questions about scans: <a href="tel:0286148400" class="focus-ring rounded font-medium text-teal700 hover:text-teal900">(02) 8614 8400</a>.</p>
+        <p class="text-ink/70 mt-1">Provided on-site by Imaging Specialists, an independent practice. Questions about scans: <a href="tel:0286148400" class="focus-ring rounded font-medium text-teal700 hover:text-teal900">(02) 8614 8400</a>.</p>
         <div class="mt-4 %s px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">Radiology hours and fees for patients with Medicare</caption>
-            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Scan and hours</th><th scope="col" class="text-right font-normal py-3">With Medicare</th></tr></thead>
+            <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Scan and hours</th><th scope="col" class="text-right font-normal py-3">With Medicare</th></tr></thead>
             <tbody>
 %s
             </tbody>
           </table>
         </div>
-        <p class="mt-3 text-sm text-ink/60">Without Medicare, extra charges apply to all scans. These fees apply to patients seen at SWIFT.</p>
+        <p class="mt-3 text-sm text-ink/70">Without Medicare, extra charges apply to all scans. These fees apply to patients seen at SWIFT.</p>
       </section>''' % (CARD, rows([
     ('X-ray and CT', 'Every day, 10am to 9pm', BULK),
     ('Ultrasound', 'Monday to Friday, 10am to 5pm', BULK),
@@ -79,7 +79,7 @@ main = '''
   <!-- Page intro -->
   <section class="bg-mint/60 border-b border-line">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
-      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/65 mb-5" style="animation-delay:.02s">
         <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
         <span aria-hidden="true" class="mx-1.5">/</span>
         <span class="text-ink/80" aria-current="page">Fees</span>
@@ -92,9 +92,9 @@ main = '''
         <!-- Headline fee -->
         <div class="hero-in relative overflow-hidden %s p-6 sm:p-7 lg:w-[380px]" style="animation-delay:.3s">
           <svg class="absolute -right-5 -top-5 w-28 h-28 text-teal900/[0.07]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2.5h10v19l-2.5-1.5-2 1.5-2-1.5-2.5 1.5V2.5Z"/><path d="M9.5 8h5M9.5 11.5h5M9.5 15h3"/></svg>
-          <p class="relative text-sm text-ink/55">Walk-in visit, facility fee</p>
+          <p class="relative text-sm text-ink/65">Walk-in visit, facility fee</p>
           <p class="relative font-display font-extrabold text-5xl tracking-tight text-ink mt-1">$396</p>
-          <p class="relative text-sm text-ink/55 mt-1">plus standard Medicare charges</p>
+          <p class="relative text-sm text-ink/65 mt-1">plus standard Medicare charges</p>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@ main = '''
             </div>
             <div>
               <p class="font-medium text-ink">With a valid Medicare card</p>
-              <p class="text-sm text-ink/65 mt-1 leading-relaxed">You get the Medicare part of your fee back. The facility fee is not covered.</p>
+              <p class="text-sm text-ink/70 mt-1 leading-relaxed">You get the Medicare part of your fee back. The facility fee is not covered.</p>
             </div>
           </div>
           <div class="flex gap-3 %s p-5">
@@ -136,7 +136,7 @@ main = '''
             </div>
             <div>
               <p class="font-medium text-ink">Without a Medicare card</p>
-              <p class="text-sm text-ink/65 mt-1 leading-relaxed">You pay the full fee on the day: the SWIFT fee plus the Medicare-equivalent charges.</p>
+              <p class="text-sm text-ink/70 mt-1 leading-relaxed">You pay the full fee on the day: the SWIFT fee plus the Medicare-equivalent charges.</p>
             </div>
           </div>
         </div>

@@ -61,14 +61,14 @@ SWIFT_SERVICES = [
               <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <ul class="px-4 pb-4 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
-              <li><span class="block text-ink font-medium">Dr Mohammed Baba</span><span class="text-ink/60">Shoulder, elbow, wrist and hand</span></li>
-              <li><span class="block text-ink font-medium">A/Prof Roderick Kuo</span><span class="text-ink/60">Foot and ankle, trauma</span></li>
-              <li><span class="block text-ink font-medium">Dr Adrian Low</span><span class="text-ink/60">Shoulder, knee and trauma</span></li>
-              <li><span class="block text-ink font-medium">Dr Jun Nagamori</span><span class="text-ink/60">Sports knee surgery</span></li>
-              <li><span class="block text-ink font-medium">A/Prof Nicholas C Smith</span><span class="text-ink/60">Hand and wrist</span></li>
-              <li><span class="block text-ink font-medium">Dr Louis Shidiak</span><span class="text-ink/60">Hip and knee surgery, sports injuries</span></li>
-              <li><span class="block text-ink font-medium">A/Prof James Sullivan</span><span class="text-ink/60">Hip and knee surgery, joint replacement</span></li>
-              <li><span class="block text-ink font-medium">Dr Timothy Yeoh</span><span class="text-ink/60">Knee and shoulder surgery</span></li>
+              <li><span class="block text-ink font-medium">Dr Mohammed Baba</span><span class="text-ink/70">Shoulder, elbow, wrist and hand</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Roderick Kuo</span><span class="text-ink/70">Foot and ankle, trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Adrian Low</span><span class="text-ink/70">Shoulder, knee and trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Jun Nagamori</span><span class="text-ink/70">Sports knee surgery</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Nicholas C Smith</span><span class="text-ink/70">Hand and wrist</span></li>
+              <li><span class="block text-ink font-medium">Dr Louis Shidiak</span><span class="text-ink/70">Hip and knee surgery, sports injuries</span></li>
+              <li><span class="block text-ink font-medium">A/Prof James Sullivan</span><span class="text-ink/70">Hip and knee surgery, joint replacement</span></li>
+              <li><span class="block text-ink font-medium">Dr Timothy Yeoh</span><span class="text-ink/70">Knee and shoulder surgery</span></li>
             </ul>
           </details>'''),
   section('sports', 'Sports injuries', icon_for('sports-injuries'), [WALK],
@@ -149,7 +149,7 @@ main = '''
   <!-- Page intro -->
   <section class="bg-mint/60 border-b border-line">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
-      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/65 mb-5" style="animation-delay:.02s">
         <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
         <span aria-hidden="true" class="mx-1.5">/</span>
         <span class="text-ink/80" aria-current="page">Services</span>
@@ -174,7 +174,7 @@ main = '''
 
         <div class="mt-14">
           <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Also in this building</h2>
-          <p class="text-ink/60 mt-1 mb-5">Independent practices, not part of SWIFT's clinical team.</p>
+          <p class="text-ink/70 mt-1 mb-5">Independent practices, not part of SWIFT's clinical team.</p>
           <div class="space-y-5">
 %s
           </div>

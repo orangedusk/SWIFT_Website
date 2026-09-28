@@ -60,6 +60,7 @@
 
   var css = [
     '.tour-launch{position:fixed;left:16px;bottom:128px;z-index:31;display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#fff;border:1px dashed rgba(44,104,94,.5);color:#2C685E;font:500 12px/1 "IBM Plex Sans",sans-serif;padding:9px 14px 9px 12px;box-shadow:0 4px 14px -4px rgba(30,69,63,.3);cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .2s ease}',
+    '@media (max-width:1023px){.tour-launch--desktop{display:none}}',
     '.tour-launch:hover{transform:translateY(-2px)}.tour-launch:active{transform:scale(.96)}',
     '.tour-launch:focus-visible,.tour-card button:focus-visible{outline:2px solid #4B9587;outline-offset:2px}',
     '@media (min-width:1024px){.tour-launch{bottom:64px}}',
@@ -95,6 +96,30 @@
   launch.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Take the tour';
   launch.addEventListener('click', function () { go(0); });
   document.body.appendChild(launch);
+
+  // On small screens the floating button would cover page content, so the tour lives in the mobile menu instead
+  var menuNav = document.querySelector('#mobileMenu nav');
+  if (menuNav) {
+    launch.classList.add('tour-launch--desktop');
+    var group = menuNav.querySelector('[data-demo-menu]');
+    if (!group) {
+      group = document.createElement('div');
+      group.setAttribute('data-demo-menu', '');
+      group.className = 'border-t border-dashed border-line mt-2 pt-3 flex flex-col gap-1';
+      group.innerHTML = '<p class="text-xs text-ink/65">Demo tools, not shown to patients</p>';
+      menuNav.appendChild(group);
+    }
+    var menuItem = document.createElement('button');
+    menuItem.type = 'button';
+    menuItem.className = 'text-left py-2.5 hover:text-teal700 active:text-teal900 focus-ring rounded';
+    menuItem.textContent = 'Take the tour';
+    menuItem.addEventListener('click', function () {
+      var menuBtn = document.getElementById('menuBtn');
+      if (menuBtn && menuBtn.getAttribute('aria-expanded') === 'true') menuBtn.click();
+      go(0);
+    });
+    group.insertBefore(menuItem, group.children[1] || null);
+  }
 
   var shield, spot, card, current = -1, settleTimer, lastFocus;
 

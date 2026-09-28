@@ -48,7 +48,7 @@ def card(slug, name, role, bio):
             %s
             <span class="flex-1 flex flex-col p-4 sm:p-5">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">%s</span>
-              <span class="block text-sm text-ink/60 mt-1">%s</span>
+              <span class="block text-sm text-ink/70 mt-1">%s</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
                 <svg class="transition-transform duration-300 group-hover:translate-x-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
@@ -65,7 +65,7 @@ for i, (title, sub, people) in enumerate(TEAM):
     <section class="%s" aria-labelledby="grp%d">
       <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-5">
         <h2 id="grp%d" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">%s</h2>
-        <p class="text-sm text-ink/55">%s</p>
+        <p class="text-sm text-ink/65">%s</p>
       </div>
       <ul class="grid %s gap-3 sm:gap-5">
 %s
@@ -76,7 +76,7 @@ main = '''
   <!-- Page intro -->
   <section class="bg-mint/60 border-b border-line">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
-      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/65 mb-5" style="animation-delay:.02s">
         <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
         <span aria-hidden="true" class="mx-1.5">/</span>
         <span class="text-ink/80" aria-current="page">Our team</span>
@@ -95,7 +95,7 @@ main = '''
     <div class="grid sm:grid-cols-[260px_1fr]">
       <div id="profilePhoto" class="aspect-square sm:aspect-auto sm:h-full bg-mint"></div>
       <div class="relative p-6 sm:p-8">
-        <button type="button" id="profileClose" class="focus-ring absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full text-ink/55 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Close profile">
+        <button type="button" id="profileClose" class="focus-ring absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full text-ink/65 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Close profile">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
         <h2 id="profileName" class="font-display font-bold text-2xl sm:text-3xl tracking-tight text-ink pr-10"></h2>
