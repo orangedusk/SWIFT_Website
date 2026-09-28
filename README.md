@@ -22,16 +22,21 @@ Then open **http://localhost:3000**.
 
 The demo tools live in `demo/` on the `demo` branch, and each page loads them with one line: `<script src="demo/demo.js" defer></script>`. Nothing demo-related is on `main`.
 
-Do all website work on `main`. Before a demo, bring the demo branch up to date:
+Day-to-day work happens on `demo`, so every change can be shown to the client with the demo tools. `main` only changes once a change is approved:
 
-```
-git checkout demo
-git merge main
-git push
-git checkout main
-```
+1. Commit website changes on `demo`. Keep them in **separate commits** from changes to the demo tools (`demo/` and the demo script tags) — never mix the two in one commit.
+2. When changes are approved, copy just those commits onto `main` and push:
+   ```
+   git checkout main
+   git cherry-pick <commit> [<commit> ...]
+   git push
+   git checkout demo
+   git merge main
+   ```
+   The final merge keeps the two branches in sync, so later cherry-picks stay clean.
+3. Never merge `demo` into `main` — that would bring the demo tools onto the live site.
 
-Change the demo tools themselves only on `demo`. If you add a page, add the demo script tag to it on `demo` (for generated pages, it's already in `tools/build_page.py` on that branch).
+If you add a page, add the demo script tag to it on `demo` in its own commit (generated pages get it from `tools/build_page.py` on that branch).
 
 ## Screenshot tooling
 
