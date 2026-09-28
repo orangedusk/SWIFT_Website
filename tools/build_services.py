@@ -29,10 +29,35 @@ def btn(href, label, primary=True):
 DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155'
 CALL = btn('tel:0288599099', 'Call (02) 8859 9099', False)
 
+# Service photos (most from the current SWIFT site). Decorative: the heading says what the service is.
+IMAGES = {
+    'emergency':     ('brand_assets/services/emergency.jpg', '50% 55%'),
+    'orthopaedics':  ('brand_assets/Treatment.jpeg', '65% 40%'),
+    'sports':        ('brand_assets/services/sports.jpg', '50% 40%'),
+    'paediatrics':   ('brand_assets/services/paediatrics.jpg', '50% 45%'),
+    'cardiology':    ('brand_assets/services/cardiology.jpg', '50% 40%'),
+    'infusion':      ('brand_assets/services/infusion.jpg', '50% 40%'),
+    'physiotherapy': ('brand_assets/services/physiotherapy.jpg', '50% 62%'),
+    'pathology':     ('brand_assets/services/pathology.jpg', '50% 50%'),
+    'imaging':       ('brand_assets/services/imaging.jpg', '50% 55%'),
+}
+
 def section(sid, name, icon, tags, summary, points, ctas, extra=''):
     pts = ''.join('<li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>%s</span></li>' % p for p in points)
+    img = IMAGES.get(sid)
+    photo = ''
+    if img:
+        photo = ('''
+          <div class="relative h-48 sm:h-64 rounded-[14px] overflow-hidden bg-mint">
+            <img src="%s" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" style="object-position:%s">
+            <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.08]" aria-hidden="true"></div>
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/25 to-transparent" aria-hidden="true"></div>
+          </div>''' % img)
+    pad = 'p-3 sm:p-3' if img else 'p-5 sm:p-8'
+    inner = 'px-2 pt-5 pb-2 sm:px-5 sm:pt-6 sm:pb-5' if img else ''
     return '''
-        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-8">
+        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] %s">%s
+          <div class="%s">
           <div class="flex items-start gap-4">
             <span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-foam to-mint">%s</span>
             <div class="flex-1 min-w-0">
@@ -45,7 +70,8 @@ def section(sid, name, icon, tags, summary, points, ctas, extra=''):
           </div>
           <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed">%s</ul>%s
           <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3">%s</div>
-        </article>''' % (sid, icon, name, ''.join(tag(t) for t in tags), summary, pts, extra, ''.join(ctas))
+          </div>
+        </article>''' % (sid, pad, photo, inner, icon, name, ''.join(tag(t) for t in tags), summary, pts, extra, ''.join(ctas))
 
 SWIFT_SERVICES = [
   section('emergency', 'Emergency &amp; urgent care', icon_for('emergency-health-care'), [WALK],
