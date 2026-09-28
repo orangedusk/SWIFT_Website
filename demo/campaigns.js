@@ -12,8 +12,8 @@
       swatch: '#2C685E',
       image: 'brand_assets/hero-doctor-patient.jpg',
       imageAlt: 'A SWIFT doctor caring for a patient',
-      headline: 'Find the right care, right now.',
-      subhead: "SWIFT treats urgent illness and injury for ages 3 months and up. No referral needed, and most days you'll be seen faster than a hospital ED.",
+      headline: 'Is urgent care right for me?',
+      subhead: 'Search a symptom to see where to go. SWIFT treats urgent illness and injury for ages 3 months and up, with no referral needed.',
       ctaText: 'Call (02) 8859 9099',
       ctaHref: 'tel:0288599099'
     },
