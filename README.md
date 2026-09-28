@@ -13,6 +13,26 @@ node serve.mjs
 
 Then open **http://localhost:3000**.
 
+## Branches
+
+| Branch | What it is |
+|---|---|
+| `main` | The real website. Only patient-facing code goes here — this is what gets deployed live. |
+| `demo` | `main` plus the client demo tools: the guided tour, campaign preview and desktop/tablet/mobile preview. Used for client demos only. |
+
+The demo tools live in `demo/` on the `demo` branch, and each page loads them with one line: `<script src="demo/demo.js" defer></script>`. Nothing demo-related is on `main`.
+
+Do all website work on `main`. Before a demo, bring the demo branch up to date:
+
+```
+git checkout demo
+git merge main
+git push
+git checkout main
+```
+
+Change the demo tools themselves only on `demo`. If you add a page, add the demo script tag to it on `demo` (for generated pages, it's already in `tools/build_page.py` on that branch).
+
 ## Screenshot tooling
 
 Two Puppeteer scripts for visual review — always screenshot from `localhost`, never a `file://` URL:

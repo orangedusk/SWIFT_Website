@@ -131,12 +131,6 @@
   .visit-tile-content { transition: opacity .18s ease, transform .18s ease; }
   .visit-tile-content.is-swapping { opacity: 0; transform: translateX(6px); }
 
-  /* Viewport preview toolbar */
-  .viewport-btn { color: rgba(24,37,36,0.5); }
-  .viewport-btn:hover { color: rgba(24,37,36,0.8); background: #EAF1EF; }
-  .viewport-btn[aria-pressed="true"] { background: #2C685E; color: #fff; }
-  .viewport-btn[aria-pressed="true"]:hover { background: #2C685E; color: #fff; }
-
   /* Mobile menu */
   #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
   #menuBtn [data-bar="top"] { transform: translateY(-5px); }
@@ -242,11 +236,6 @@
           <a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
           <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request appointment</a>
         </div>
-        <!-- Demo tools on mobile (the floating buttons would cover page content). tour.js adds "Take the tour" here. -->
-        <div data-demo-menu class="border-t border-dashed border-line mt-2 pt-3 flex flex-col gap-1">
-          <p class="text-xs text-ink/65">Demo tools, not shown to patients</p>
-          <button type="button" data-demo="campaigns" class="mobile-link text-left py-2.5 hover:text-teal700 active:text-teal900 focus-ring rounded">Preview campaigns</button>
-        </div>
       </nav>
     </div>
   </div>
@@ -273,61 +262,6 @@
     </button>
   </div>
 </nav>
-
-<!-- Demo-only: campaign preview tool (not a patient-facing feature) -->
-<button type="button" id="campaignDemoBtn" class="fixed z-30 bottom-5 left-4 focus-ring hidden lg:inline-flex items-center gap-1.5 rounded-full bg-white border border-dashed border-ink/25 text-ink/70 text-xs font-medium pl-3 pr-3.5 py-2 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] hover:border-ink/40 hover:text-ink/80 transition-colors">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-  Preview campaigns
-</button>
-
-<div id="campaignModal" class="fixed inset-0 z-50 hidden">
-  <div id="campaignModalBackdrop" class="absolute inset-0 bg-ink/50 backdrop-blur-sm"></div>
-  <div class="relative h-full flex items-end sm:items-center justify-center p-0 sm:p-6">
-    <div class="relative bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] max-h-[85vh] overflow-y-auto">
-      <div class="flex items-center justify-between px-5 sm:px-6 pt-5 pb-3 sticky top-0 bg-white border-b border-line">
-        <div>
-          <p class="font-display font-semibold text-ink">Preview a campaign</p>
-          <p class="text-xs text-ink/65 mt-0.5">Demo only — swaps the hero above</p>
-        </div>
-        <button type="button" id="campaignModalClose" class="focus-ring w-8 h-8 flex items-center justify-center rounded-full hover:bg-mint text-ink/65 hover:text-ink" aria-label="Close">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <div id="campaignList" class="p-3 sm:p-3 space-y-1"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Demo-only: viewport preview tool (not a patient-facing feature) -->
-<div id="viewportSwitcher" class="fixed z-[80] top-[120px] right-4 hidden lg:flex items-center gap-0.5 rounded-full bg-white border border-dashed border-ink/25 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] p-1">
-  <button type="button" data-viewport="desktop" class="viewport-btn focus-ring flex items-center gap-1.5 rounded-full text-xs font-medium px-3 py-1.5 transition-colors" aria-pressed="true">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.2" stroke="currentColor" stroke-width="1.6"/><path d="M9 20h6M12 16v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Desktop
-  </button>
-  <button type="button" data-viewport="tablet" class="viewport-btn focus-ring flex items-center gap-1.5 rounded-full text-xs font-medium px-3 py-1.5 transition-colors" aria-pressed="false">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="1.6" stroke="currentColor" stroke-width="1.6"/><path d="M11 19h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Tablet
-  </button>
-  <button type="button" data-viewport="mobile" class="viewport-btn focus-ring flex items-center gap-1.5 rounded-full text-xs font-medium px-3 py-1.5 transition-colors" aria-pressed="false">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="1.8" stroke="currentColor" stroke-width="1.6"/><path d="M11 19h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Mobile
-  </button>
-</div>
-
-<div id="viewportOverlay" class="fixed inset-0 z-[70] hidden bg-ink/70 backdrop-blur-sm">
-  <div class="relative h-full flex flex-col items-center justify-center gap-3 p-6">
-    <div class="flex items-center gap-3 text-white/90 text-sm font-medium">
-      <span id="viewportLabel">Tablet — 768px</span>
-      <button type="button" id="viewportClose" class="focus-ring inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white px-3 py-1.5 text-xs transition-colors">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Close
-      </button>
-    </div>
-    <div class="rounded-[1.5rem] border-4 border-ink/80 bg-white shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] overflow-hidden" style="height: min(85vh, 900px);">
-      <iframe id="viewportFrame" title="Site preview" class="h-full" style="width: 768px;"></iframe>
-    </div>
-  </div>
-</div>
 
 <main>
 
@@ -1264,156 +1198,7 @@
     renderNodes();
     renderTile();
   })();
-
-  (function () {
-    var campaigns = [
-      {
-        id: 'default',
-        label: 'Everyday care',
-        desc: 'The standard homepage hero (current)',
-        swatch: '#2C685E',
-        image: 'brand_assets/hero-doctor-patient.jpg',
-        imageAlt: 'A SWIFT doctor caring for a patient',
-        headline: 'Find the right care, right now.',
-        subhead: "SWIFT treats urgent illness and injury for ages 3 months and up. No referral needed, and most days you'll be seen faster than a hospital ED.",
-        ctaText: 'Call (02) 8859 9099',
-        ctaHref: 'tel:0288599099'
-      },
-      {
-        id: 'flu',
-        label: 'Flu shot season',
-        desc: 'Seasonal vaccination campaign',
-        swatch: '#4B9587',
-        image: 'brand_assets/Flu_shot.jpeg',
-        imageAlt: 'Flu vaccination campaign',
-        headline: 'Flu shots, walk in today.',
-        subhead: 'Protect yourself and your family this flu season. No appointment needed — just walk in during opening hours.',
-        ctaText: 'Book your flu shot',
-        ctaHref: 'request-appointment.html'
-      },
-      {
-        id: 'kids',
-        label: 'School holidays',
-        desc: 'Paediatric-focused campaign',
-        swatch: '#377E71',
-        image: 'brand_assets/school_holidays.jpeg',
-        imageAlt: 'School holidays campaign',
-        headline: 'School holidays? We’ve got the kids covered.',
-        subhead: 'From sprains to fevers, we treat children 3 months and up — every day of the holidays.',
-        ctaText: 'Walk in today',
-        ctaHref: '#right-care'
-      }
-    ];
-
-    var demoBtn = document.getElementById('campaignDemoBtn');
-    var modal = document.getElementById('campaignModal');
-    var backdrop = document.getElementById('campaignModalBackdrop');
-    var closeBtn = document.getElementById('campaignModalClose');
-    var list = document.getElementById('campaignList');
-    if (!demoBtn || !modal || !list) return;
-
-    var heroImg = document.getElementById('heroImg');
-    var heroHeadline = document.getElementById('heroHeadline');
-    var heroSubhead = document.getElementById('heroSubhead');
-    var heroCta = document.getElementById('heroPrimaryCta');
-
-    function applyCampaign(c) {
-      heroImg.src = c.image;
-      heroImg.alt = c.imageAlt;
-      heroHeadline.textContent = c.headline;
-      heroSubhead.textContent = c.subhead;
-      heroCta.textContent = c.ctaText;
-      heroCta.setAttribute('href', c.ctaHref);
-    }
-
-    campaigns.forEach(function (c) {
-      var item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'w-full focus-ring flex items-center gap-3 text-left rounded-xl p-3 hover:bg-mint transition-colors';
-      item.innerHTML =
-        '<span class="shrink-0 w-10 h-10 rounded-lg" style="background:' + c.swatch + '"></span>' +
-        '<span><span class="block font-medium text-ink text-sm">' + c.label + '</span>' +
-        '<span class="block text-xs text-ink/65">' + c.desc + '</span></span>';
-      item.addEventListener('click', function () {
-        applyCampaign(c);
-        closeModal();
-      });
-      list.appendChild(item);
-    });
-
-    function openModal() {
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    demoBtn.addEventListener('click', openModal);
-    document.querySelectorAll('[data-demo="campaigns"]').forEach(function (b) { b.addEventListener('click', openModal); });
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
-    });
-  })();
-
-  (function () {
-    // Don't show the device switcher inside its own preview iframe
-    if (window.top !== window.self) return;
-
-    var switcher = document.getElementById('viewportSwitcher');
-    var overlay = document.getElementById('viewportOverlay');
-    var frame = document.getElementById('viewportFrame');
-    var label = document.getElementById('viewportLabel');
-    var closeBtn = document.getElementById('viewportClose');
-    if (!switcher || !overlay) return;
-
-    var sizes = {
-      tablet: { width: 768, label: 'Tablet — 768px' },
-      mobile: { width: 390, label: 'Mobile — 390px' }
-    };
-
-    var buttons = Array.prototype.slice.call(switcher.querySelectorAll('.viewport-btn'));
-
-    function setActive(name) {
-      buttons.forEach(function (b) {
-        b.setAttribute('aria-pressed', b.dataset.viewport === name ? 'true' : 'false');
-      });
-    }
-
-    function showViewport(name) {
-      var size = sizes[name];
-      frame.style.width = size.width + 'px';
-      label.textContent = size.label;
-      if (!frame.src) frame.src = window.location.href;
-      overlay.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      setActive(name);
-    }
-
-    function showDesktop() {
-      overlay.classList.add('hidden');
-      document.body.style.overflow = '';
-      setActive('desktop');
-    }
-
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var name = btn.dataset.viewport;
-        if (name === 'desktop') showDesktop();
-        else showViewport(name);
-      });
-    });
-
-    closeBtn.addEventListener('click', showDesktop);
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) showDesktop();
-    });
-  })();
 </script>
 
-<script src="tour.js" defer></script>
 </body>
 </html>

@@ -40,6 +40,6 @@ def build(filename, title, desc, main, active=None, css='', js=''):
         c = c.replace('<a href="%s" class="hover:text-teal700' % active, '<a href="%s" aria-current="page" class="text-teal700 font-medium hover:text-teal900' % active)
         c = c.replace('<a href="%s" class="mobile-link py-2.5 hover:text-teal700' % active, '<a href="%s" aria-current="page" class="mobile-link py-2.5 text-teal700 font-medium hover:text-teal900' % active)
     out = (h + css + '</style>\n</head>\n\n' + c + '<main>\n' + main + '\n</main>\n\n' + f +
-           '\n\n<script>\n' + menu_js + '\n' + js + '\n</script>\n<script src="tour.js" defer></script>\n</body>\n</html>\n')
+           '\n\n<script>\n' + menu_js + '\n' + js + '\n</script>\n</body>\n</html>\n')
     open(ROOT + filename, 'w').write(out)
     print('wrote', filename, len(out), 'bytes')
