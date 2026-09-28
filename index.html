@@ -157,6 +157,22 @@
   .verdict-in { animation: verdictIn .35s cubic-bezier(.22,1,.36,1); }
 
   /* Right care intro: scale draws left to right, lanes follow in urgency order (plays once) */
+  /* Urgency colours: red 000, deep teal SWIFT, pale GP. Each third of the band sits over one column,
+     so the colour changes land in the gaps between them. */
+  .care-scale-fill { background: linear-gradient(90deg, #B23A3A 0%, #B23A3A 32.6%, #1E453F 34%, #1E453F 65.9%, #C9D8D4 67.3%, #DCE7E4 100%); }
+  /* Mobile: the columns stack, so each gets its own segment of the scale down the left edge */
+  @media (max-width: 767px) {
+    .care-lane { position: relative; }
+    .care-lane::before { content: ""; position: absolute; left: -20px; top: 0; bottom: 0; width: 6px; border-radius: 999px; }
+    .care-lane[data-lane="ed"]::before { background: #B23A3A; }
+    .care-lane[data-lane="swift"]::before { background: #1E453F; }
+    .care-lane[data-lane="gp"]::before { background: #C9D8D4; }
+  }
+  /* Symptom chips sit on the hero photo */
+  .hero-finder .care-chip:hover { border-color: #fff; background: rgba(255,255,255,0.2); }
+  .hero-finder .care-chip[aria-pressed="true"] { background: #fff; border-color: #fff; color: #1E453F; }
+  .hero-finder .focus-ring:focus-visible { outline-color: #fff; }
+  .hero-finder #careVerdict > div { box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 18px 40px -16px rgba(0,0,0,0.6); }
   .care-scale-fill { transform: scaleX(0); transform-origin: left center; transition: transform .9s cubic-bezier(.22,1,.36,1); }
   .care-scale.is-in .care-scale-fill { transform: scaleX(1); }
   .care-lane.care-pre { opacity: 0; transform: translateY(18px); }
@@ -271,17 +287,40 @@
       <img id="heroImg" src="brand_assets/hero-doctor-patient.jpg" alt="A SWIFT doctor caring for a patient" class="w-full h-full object-cover object-[50%_18%] hero-img-zoom">
       <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.15]" aria-hidden="true"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/60 via-ink/20 to-transparent" aria-hidden="true"></div>
     </div>
 
     <div class="relative max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-16 pb-16 sm:pb-20 min-h-[75vh] sm:min-h-[660px] flex flex-col justify-end">
-      <div class="max-w-xl">
-        <h1 id="heroHeadline" class="hero-in font-display font-extrabold text-[2.5rem] leading-[1.05] sm:text-6xl sm:leading-[1.05] tracking-tight text-white" style="animation-delay:.05s">
-          Find the right care, right now.
+      <div class="max-w-2xl">
+        <h1 id="heroHeadline" class="hero-in text-balance font-display font-extrabold text-[2.5rem] leading-[1.05] sm:text-6xl sm:leading-[1.05] tracking-tight text-white" style="animation-delay:.05s">
+          Is urgent care right for me?
         </h1>
         <p id="heroSubhead" class="hero-in mt-5 text-lg text-white/85 leading-relaxed max-w-xl" style="animation-delay:.22s">
-          SWIFT treats urgent illness and injury for ages 3 months and up. No referral needed, and most days you'll be seen faster than a hospital ED.
+          Search a symptom to see where to go. SWIFT treats urgent illness and injury for ages 3 months and up, with no referral needed.
         </p>
-        <div class="hero-in mt-7 flex flex-wrap gap-3" style="animation-delay:.38s">
+        <!-- Symptom search: answers the headline. Results highlight in the three columns below. -->
+        <div id="careFinder" class="hero-in hero-finder mt-7" style="animation-delay:.3s">
+          <label for="careSearch" class="sr-only">Search a symptom</label>
+          <div class="relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;sprained ankle&rdquo; or &ldquo;fever&rdquo;" class="w-full rounded-full border border-white bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] placeholder:text-ink/40 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
+            <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-2" aria-label="Common symptoms">
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="sprain" aria-pressed="false">Sprain</button>
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="fever" aria-pressed="false">Fever</button>
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="cut" aria-pressed="false">Deep cut</button>
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="chest pain" aria-pressed="false">Chest pain</button>
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="prescription" aria-pressed="false">Prescription</button>
+            <button type="button" class="care-chip focus-ring rounded-full border border-white/35 bg-white/10 px-3.5 py-1.5 text-sm text-white" data-q="broken" aria-pressed="false">Broken bone</button>
+          </div>
+
+          <!-- Verdict (filled by script) -->
+          <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
+        </div>
+        <div class="hero-in mt-7 flex flex-wrap gap-3" style="animation-delay:.42s">
           <a id="heroPrimaryCta" href="tel:0288599099" class="focus-ring spring inline-flex items-center gap-2 rounded-full bg-teal600 hover:bg-teal500 hover:scale-[1.03] text-white font-medium px-6 py-3 transition-[transform,background-color] duration-300 active:scale-[0.97] shadow-[0_12px_28px_-10px_rgba(0,0,0,0.55)]">
             Call (02) 8859 9099
           </a>
@@ -289,10 +328,6 @@
             Get directions
           </a>
         </div>
-        <a href="#right-care" class="hero-in mt-5 inline-flex items-center gap-1.5 text-[15px] font-medium text-white/85 hover:text-white underline underline-offset-4 decoration-white/40 hover:decoration-white focus-ring rounded active:text-white/70" style="animation-delay:.46s">
-          Not sure if SWIFT is right for you?
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
       <div class="hero-in self-start mt-6 sm:mt-0 sm:absolute sm:right-8 sm:bottom-8 bg-white rounded-2xl shadow-[0_10px_28px_-10px_rgba(0,0,0,0.4)] px-4 py-3 flex items-center gap-2.5" style="animation-delay:.55s">
@@ -307,44 +342,20 @@
 
   <!-- Right care: 000 vs SWIFT vs GP decision guide.
        Clinical wording should be reviewed by SWIFT's medical team before launch. -->
-  <section id="right-care" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-10 sm:pb-14" aria-labelledby="rightCareHeading">
-    <div class="max-w-2xl">
-      <h2 id="rightCareHeading" class="reveal font-display font-bold text-2xl sm:text-3xl tracking-tight text-ink mb-1">Is urgent care right for me?</h2>
-      <p class="text-ink/70">Where to go depends on how serious it is. Search a symptom, or scan the three columns below.</p>
-    </div>
+  <section id="right-care" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-14 pb-10 sm:pb-14" aria-labelledby="rightCareHeading">
+    <h2 id="rightCareHeading" class="sr-only">Where to go, from most to least urgent</h2>
 
-    <!-- Symptom search -->
-    <div class="mt-6 max-w-2xl">
-      <label for="careSearch" class="sr-only">Search a symptom</label>
-      <div class="relative">
-        <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;sprained ankle&rdquo; or &ldquo;fever&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-3.5 text-[16px] shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] placeholder:text-ink/40 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
-        <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <div class="mt-3 flex flex-wrap gap-2" aria-label="Common symptoms">
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="sprain" aria-pressed="false">Sprain</button>
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="fever" aria-pressed="false">Fever</button>
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="cut" aria-pressed="false">Deep cut</button>
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="chest pain" aria-pressed="false">Chest pain</button>
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="prescription" aria-pressed="false">Prescription</button>
-        <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-ink/75" data-q="broken" aria-pressed="false">Broken bone</button>
-      </div>
-
-      <!-- Verdict (filled by script) -->
-      <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
-    </div>
-
-    <!-- Urgency scale -->
-    <div id="careScale" class="care-scale hidden md:flex items-center gap-3 mt-10 mb-3 text-sm text-ink/65" aria-hidden="true">
-      <span>Most urgent</span>
-      <span class="flex-1 h-1.5 rounded-full bg-line/60 overflow-hidden"><span class="care-scale-fill block h-full rounded-full bg-gradient-to-r from-urgent via-teal600 to-line"></span></span>
-      <span>Can wait</span>
+    <!-- Urgency scale: one band whose colours sit over the three columns below -->
+    <div id="careScale" class="care-scale hidden md:block relative h-12 rounded-full bg-line/50 overflow-hidden mb-5" aria-hidden="true">
+      <span class="care-scale-fill absolute inset-0 rounded-full"></span>
+      <span class="relative h-full flex items-center justify-between px-6 text-sm font-medium">
+        <span class="text-white">Most urgent</span>
+        <span class="text-teal900">Can wait</span>
+      </span>
     </div>
 
     <!-- Lanes -->
-    <div id="careLanes" class="care-lanes grid md:grid-cols-3 gap-4 md:gap-5 mt-8 md:mt-0 items-stretch">
+    <div id="careLanes" class="care-lanes grid md:grid-cols-3 gap-4 md:gap-5 relative pl-5 md:pl-0 items-stretch">
 
       <!-- 000 -->
       <div class="care-lane care-pre flex flex-col rounded-2xl bg-white border border-line border-t-4 border-t-urgent shadow-[0_2px_10px_-4px_rgba(178,58,58,0.18)] p-5 sm:p-6" data-lane="ed">
