@@ -64,6 +64,8 @@ brand_assets/         Logo marks and real clinic photography
 - `swift-icon-dark.png` / `swift-icon-white.png` — the SWIFT cross/arrow mark, cleanly cropped from the original logo export (the full wordmark export is clipped mid-text at the source and unusable — see `swift-original-logo-export-CLIPPED-reference-only.png`)
 - `clinic-reception.jpg`, `clinic-waiting-area.jpg` — real architectural renders of the actual Rouse Hill clinic, sourced from the current live site
 - `hero-doctor-patient.jpg` — supplied by the client, used in the hero and the featured services tile
+- `clinic-reception-photo.jpg` — real photo of SWIFT's reception (with the SWIFT sign), from the current live site; used in the clinic facilities gallery
+- `services/` — one photo per service on the Services page, taken from the current live site's service pages (resized to about 1400px). `pathology.jpg` is a Wix stock photo; orthopaedics reuses `Treatment.jpeg`; dental has no photo yet
 
 ## Known placeholders — needs real input before launch
 
