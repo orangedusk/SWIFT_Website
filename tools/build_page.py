@@ -12,6 +12,33 @@ chrome = between('<body', '<main>')
 footer = between('<!-- Footer -->', '</footer>', incl_b=True)
 menu_js = between('  (function () {\n    var btn = document.getElementById(\'menuBtn\');', '  })();', incl_b=True)
 
+# Design tokens shared by every sub page (match the homepage)
+SURFACE = 'shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]'
+CARD = 'bg-white rounded-[20px] border border-line ' + SURFACE
+H2 = 'font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink'
+BTN = 'focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 '
+BTN_PRIMARY = BTN + 'bg-teal900 hover:bg-teal700 text-white transition-[transform,background-color]'
+BTN_SECONDARY = BTN + 'border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 transition-[transform,border-color,color]'
+
+def intro(crumb, title, text, aside=''):
+    """Page intro in the homepage's section style: big heading left, text (or an aside) right."""
+    bc = ('      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-6" style="animation-delay:.02s">\n'
+          '        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>\n'
+          '        <span aria-hidden="true" class="mx-1.5">/</span>\n'
+          '        <span class="text-ink/80" aria-current="page">%s</span>\n      </nav>\n') % crumb
+    h1 = ('<h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">%s</h1>' % title)
+    p = '<p class="hero-in %s text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.2s">%s</p>'
+    if aside:
+        body = ('      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">\n'
+                '        <div class="lg:col-span-7">\n          %s\n          %s\n        </div>\n'
+                '        <div class="lg:col-span-5 hero-in" style="animation-delay:.3s">\n%s\n        </div>\n      </div>') % (h1, p % ('mt-5', text), aside)
+    else:
+        body = ('      <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-end">\n'
+                '        <div class="lg:col-span-6">%s</div>\n'
+                '        <div class="lg:col-span-6">%s</div>\n      </div>') % (h1, p % ('lg:mb-2', text))
+    return ('\n  <!-- Page intro -->\n  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-16">\n'
+            + bc + body + '\n  </section>\n')
+
 REQ_BTN = '''      <a href="request-appointment.html" class="hidden sm:inline-flex focus-ring items-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-4 py-2 sm:px-5 sm:py-2.5 transition-colors active:scale-[0.97]">
         Request appointment
       </a>

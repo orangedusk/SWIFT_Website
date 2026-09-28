@@ -29,6 +29,7 @@
           tealGlow: '#6FB3A3',
           paper:    '#F6F8F7',
           mint:     '#EAF1EF',
+          foam:     '#E1F0EA',
           line:     '#D9E3E0',
           urgent:   '#B23A3A',
           urgentDk: '#8C2C2C',
@@ -71,6 +72,14 @@
   #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
   #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
   #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
+
+  /* Shared with the homepage: layered cards, chips, section headings */
+  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
+  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
+  .card-link:active { transform: scale(.98); }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(30,69,63,.14); color: #1E453F; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
+  .chip-solid { background: #1E453F; border-color: #1E453F; color: #fff; }
+  .chip-quiet { background: #F6F8F7; color: rgba(24,37,36,.75); }
 
 
   /* Team */
@@ -169,32 +178,33 @@
 
 <main>
 
+
   <!-- Page intro -->
-  <section class="bg-mint/60 border-b border-line">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
-      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/65 mb-5" style="animation-delay:.02s">
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-16">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-6" style="animation-delay:.02s">
         <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
         <span aria-hidden="true" class="mx-1.5">/</span>
         <span class="text-ink/80" aria-current="page">Our team</span>
       </nav>
-      <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink" style="animation-delay:.08s">Meet the team</h1>
-      <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-2xl" style="animation-delay:.2s">Experienced emergency physicians and nurses, working with specialists in orthopaedics, cardiology, paediatrics and more.</p>
-    </div>
+      <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-end">
+        <div class="lg:col-span-6"><h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">Meet the team</h1></div>
+        <div class="lg:col-span-6"><p class="hero-in lg:mb-2 text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.2s">Experienced emergency physicians and nurses, working with specialists in orthopaedics, cardiology, paediatrics and more.</p></div>
+      </div>
   </section>
 
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24">
 
     <section class="" aria-labelledby="grp0">
-      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-5">
-        <h2 id="grp0" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Leadership</h2>
-        <p class="text-sm text-ink/65">Founders and clinical leads</p>
+      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-6">
+        <h2 id="grp0" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Leadership</h2>
+        <p class="text-ink/70">Founders and clinical leads</p>
       </div>
-      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+      <ul class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
         <li class="flex">
-          <button type="button" id="vijay-manivel" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="vijay-manivel" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="vijay-manivel" data-name="Dr Vijay Manivel" data-role="Co-Founder and Director" data-bio="" data-photo="brand_assets/team/vijay-manivel.jpg" data-initials="VM" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/vijay-manivel.jpg" alt="Portrait of Dr Vijay Manivel" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/vijay-manivel.jpg" alt="Portrait of Dr Vijay Manivel" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Vijay Manivel</span>
               <span class="block text-sm text-ink/70 mt-1">Co-Founder and Director</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -204,10 +214,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="gopinath-betarayappa" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="gopinath-betarayappa" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="gopinath-betarayappa" data-name="Dr Gopinath Betarayappa" data-role="Co-Founder and Director" data-bio="" data-photo="brand_assets/team/gopinath-betarayappa.jpg" data-initials="GB" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/gopinath-betarayappa.jpg" alt="Portrait of Dr Gopinath Betarayappa" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/gopinath-betarayappa.jpg" alt="Portrait of Dr Gopinath Betarayappa" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Gopinath Betarayappa</span>
               <span class="block text-sm text-ink/70 mt-1">Co-Founder and Director</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -217,10 +227,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="berinder-shahpuri" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="berinder-shahpuri" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="berinder-shahpuri" data-name="Dr Berinder Shahpuri" data-role="Deputy Clinical Director, Emergency Physician" data-bio="" data-photo="brand_assets/team/berinder-shahpuri.jpg" data-initials="BS" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/berinder-shahpuri.jpg" alt="Portrait of Dr Berinder Shahpuri" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/berinder-shahpuri.jpg" alt="Portrait of Dr Berinder Shahpuri" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Berinder Shahpuri</span>
               <span class="block text-sm text-ink/70 mt-1">Deputy Clinical Director, Emergency Physician</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -232,17 +242,17 @@
       </ul>
     </section>
 
-    <section class="mt-14" aria-labelledby="grp1">
-      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-5">
-        <h2 id="grp1" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Emergency doctors</h2>
-        <p class="text-sm text-ink/65">Emergency physicians who see every walk-in patient</p>
+    <section class="mt-16 sm:mt-20" aria-labelledby="grp1">
+      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-6">
+        <h2 id="grp1" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Emergency doctors</h2>
+        <p class="text-ink/70">Emergency physicians who see every walk-in patient</p>
       </div>
       <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
         <li class="flex">
-          <button type="button" id="nina-dhaliwal" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="nina-dhaliwal" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="nina-dhaliwal" data-name="Dr Nina Dhaliwal" data-role="Emergency Physician and Toxicologist" data-bio="" data-photo="brand_assets/team/nina-dhaliwal.jpg" data-initials="ND" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/nina-dhaliwal.jpg" alt="Portrait of Dr Nina Dhaliwal" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/nina-dhaliwal.jpg" alt="Portrait of Dr Nina Dhaliwal" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Nina Dhaliwal</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician and Toxicologist</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -252,10 +262,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="pramod-chandru" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="pramod-chandru" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="pramod-chandru" data-name="Dr Pramod Chandru" data-role="Emergency Physician and Toxicologist" data-bio="" data-photo="brand_assets/team/pramod-chandru.jpg" data-initials="PC" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/pramod-chandru.jpg" alt="Portrait of Dr Pramod Chandru" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/pramod-chandru.jpg" alt="Portrait of Dr Pramod Chandru" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Pramod Chandru</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician and Toxicologist</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -265,10 +275,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="earl-butler" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="earl-butler" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="earl-butler" data-name="Dr Earl Butler" data-role="Emergency Physician and Toxicologist" data-bio="" data-photo="" data-initials="EB" aria-haspopup="dialog">
-            <div class="aspect-square bg-mint flex items-center justify-center"><span class="font-display font-bold text-4xl text-teal700">EB</span></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square rounded-[14px] bg-gradient-to-b from-foam to-mint flex items-center justify-center"><span class="font-display font-bold text-4xl text-teal700">EB</span></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Earl Butler</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician and Toxicologist</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -278,10 +288,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="stephen-madden" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="stephen-madden" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="stephen-madden" data-name="Dr Stephen Madden" data-role="Senior Emergency Doctor" data-bio="" data-photo="brand_assets/team/stephen-madden.jpg" data-initials="SM" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/stephen-madden.jpg" alt="Portrait of Dr Stephen Madden" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/stephen-madden.jpg" alt="Portrait of Dr Stephen Madden" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Stephen Madden</span>
               <span class="block text-sm text-ink/70 mt-1">Senior Emergency Doctor</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -291,10 +301,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="athar-khan" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="athar-khan" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="athar-khan" data-name="Dr Athar Khan" data-role="Senior Emergency Doctor" data-bio="" data-photo="brand_assets/team/athar-khan.jpg" data-initials="AK" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/athar-khan.jpg" alt="Portrait of Dr Athar Khan" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/athar-khan.jpg" alt="Portrait of Dr Athar Khan" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Athar Khan</span>
               <span class="block text-sm text-ink/70 mt-1">Senior Emergency Doctor</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -304,10 +314,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="mahesh-jagada-gangadharaiah" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="mahesh-jagada-gangadharaiah" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="mahesh-jagada-gangadharaiah" data-name="Dr Mahesh Jagada Gangadharaiah" data-role="Emergency Physician" data-bio="" data-photo="brand_assets/team/mahesh-jagada-gangadharaiah.jpg" data-initials="MG" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/mahesh-jagada-gangadharaiah.jpg" alt="Portrait of Dr Mahesh Jagada Gangadharaiah" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/mahesh-jagada-gangadharaiah.jpg" alt="Portrait of Dr Mahesh Jagada Gangadharaiah" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Mahesh Jagada Gangadharaiah</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -317,10 +327,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="behzad-mirmiran" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="behzad-mirmiran" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="behzad-mirmiran" data-name="Dr Behzad Mirmiran" data-role="Emergency Physician" data-bio="" data-photo="brand_assets/team/behzad-mirmiran.jpg" data-initials="BM" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/behzad-mirmiran.jpg" alt="Portrait of Dr Behzad Mirmiran" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/behzad-mirmiran.jpg" alt="Portrait of Dr Behzad Mirmiran" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Behzad Mirmiran</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -330,10 +340,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="nasim-erfani" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="nasim-erfani" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="nasim-erfani" data-name="Dr Nasim Erfani" data-role="Emergency Physician" data-bio="" data-photo="brand_assets/team/nasim-erfani.jpg" data-initials="NE" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/nasim-erfani.jpg" alt="Portrait of Dr Nasim Erfani" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/nasim-erfani.jpg" alt="Portrait of Dr Nasim Erfani" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Dr Nasim Erfani</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Physician</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -345,17 +355,17 @@
       </ul>
     </section>
 
-    <section class="mt-14" aria-labelledby="grp2">
-      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-5">
-        <h2 id="grp2" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Nursing team</h2>
-        <p class="text-sm text-ink/65">Emergency nurses and nurse practitioners</p>
+    <section class="mt-16 sm:mt-20" aria-labelledby="grp2">
+      <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-6">
+        <h2 id="grp2" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Nursing team</h2>
+        <p class="text-ink/70">Emergency nurses and nurse practitioners</p>
       </div>
       <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
         <li class="flex">
-          <button type="button" id="gisha-george" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="gisha-george" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="gisha-george" data-name="Gisha George" data-role="Nurse Unit Manager" data-bio="" data-photo="brand_assets/team/gisha-george.jpg" data-initials="GG" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/gisha-george.jpg" alt="Portrait of Gisha George" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/gisha-george.jpg" alt="Portrait of Gisha George" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Gisha George</span>
               <span class="block text-sm text-ink/70 mt-1">Nurse Unit Manager</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -365,10 +375,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="farai-mupedzi" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="farai-mupedzi" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="farai-mupedzi" data-name="Farai Mupedzi" data-role="Transitional Nurse Practitioner" data-bio="" data-photo="brand_assets/team/farai-mupedzi.jpg" data-initials="FM" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/farai-mupedzi.jpg" alt="Portrait of Farai Mupedzi" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/farai-mupedzi.jpg" alt="Portrait of Farai Mupedzi" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Farai Mupedzi</span>
               <span class="block text-sm text-ink/70 mt-1">Transitional Nurse Practitioner</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -378,10 +388,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="natalie-weitenberg" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="natalie-weitenberg" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="natalie-weitenberg" data-name="Natalie Weitenberg" data-role="Transitional Nurse Practitioner" data-bio="" data-photo="brand_assets/team/natalie-weitenberg.jpg" data-initials="NW" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/natalie-weitenberg.jpg" alt="Portrait of Natalie Weitenberg" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/natalie-weitenberg.jpg" alt="Portrait of Natalie Weitenberg" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Natalie Weitenberg</span>
               <span class="block text-sm text-ink/70 mt-1">Transitional Nurse Practitioner</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -391,10 +401,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="geetha-ganesan" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="geetha-ganesan" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="geetha-ganesan" data-name="Geetha Ganesan" data-role="Emergency Registered Nurse" data-bio="" data-photo="brand_assets/team/geetha-ganesan.jpg" data-initials="GG" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/geetha-ganesan.jpg" alt="Portrait of Geetha Ganesan" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/geetha-ganesan.jpg" alt="Portrait of Geetha Ganesan" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Geetha Ganesan</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Registered Nurse</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -404,10 +414,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="stuart-dawkins" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="stuart-dawkins" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="stuart-dawkins" data-name="Stuart Dawkins" data-role="Emergency Registered Nurse" data-bio="" data-photo="brand_assets/team/stuart-dawkins.jpg" data-initials="SD" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/stuart-dawkins.jpg" alt="Portrait of Stuart Dawkins" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/stuart-dawkins.jpg" alt="Portrait of Stuart Dawkins" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Stuart Dawkins</span>
               <span class="block text-sm text-ink/70 mt-1">Emergency Registered Nurse</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -417,10 +427,10 @@
           </button>
         </li>
         <li class="flex">
-          <button type="button" id="edsel-de-mesa" class="team-card group w-full h-full flex flex-col text-left focus-ring rounded-2xl bg-white border border-line overflow-hidden shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] hover:shadow-[0_14px_28px_-10px_rgba(30,69,63,0.25)] hover:-translate-y-0.5 active:scale-[0.98] transition-[transform,box-shadow] duration-300 scroll-mt-[140px]"
+          <button type="button" id="edsel-de-mesa" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
             data-slug="edsel-de-mesa" data-name="Edsel de Mesa" data-role="Registered Nurse" data-bio="" data-photo="brand_assets/team/edsel-de-mesa.jpg" data-initials="EM" aria-haspopup="dialog">
-            <div class="aspect-square relative overflow-hidden bg-mint"><img src="brand_assets/team/edsel-de-mesa.jpg" alt="Portrait of Edsel de Mesa" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top"><div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.06]" aria-hidden="true"></div><div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/25 to-transparent" aria-hidden="true"></div></div>
-            <span class="flex-1 flex flex-col p-4 sm:p-5">
+            <div class="aspect-square relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint"><img src="brand_assets/team/edsel-de-mesa.jpg" alt="Portrait of Edsel de Mesa" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>
+            <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">Edsel de Mesa</span>
               <span class="block text-sm text-ink/70 mt-1">Registered Nurse</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
@@ -434,7 +444,7 @@
   </div>
 
   <!-- Profile dialog -->
-  <dialog id="profile" class="team-dialog p-0 m-auto w-[calc(100%-2rem)] max-w-3xl rounded-2xl bg-white text-ink shadow-[0_30px_80px_-20px_rgba(24,37,36,0.55)] backdrop:bg-ink/55 backdrop:backdrop-blur-sm" aria-labelledby="profileName">
+  <dialog id="profile" class="team-dialog p-0 m-auto w-[calc(100%-2rem)] max-w-3xl rounded-[28px] overflow-hidden bg-white text-ink shadow-[0_30px_80px_-20px_rgba(24,37,36,0.55)] backdrop:bg-ink/55 backdrop:backdrop-blur-sm" aria-labelledby="profileName">
     <div class="grid sm:grid-cols-[260px_1fr]">
       <div id="profilePhoto" class="aspect-square sm:aspect-auto sm:h-full bg-mint"></div>
       <div class="relative p-6 sm:p-8">
@@ -445,8 +455,8 @@
         <p id="profileRole" class="text-teal700 font-medium mt-1"></p>
         <p id="profileBio" class="mt-5 text-ink/75 leading-relaxed"></p>
         <div class="mt-7 pt-5 border-t border-line flex flex-wrap gap-3">
-          <a href="request-appointment.html" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 hover:scale-[1.03] text-white font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Request appointment</a>
-          <a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a>
+          <a href="request-appointment.html" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 bg-teal900 hover:bg-teal700 text-white transition-[transform,background-color]">Request appointment</a>
+          <a href="tel:0288599099" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 transition-[transform,border-color,color]">Call (02) 8859 9099</a>
         </div>
       </div>
     </div>
