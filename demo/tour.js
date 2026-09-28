@@ -28,7 +28,7 @@
     { page: 'index.html', target: q('#facilities'), title: 'Our clinic facilities', body: 'Real photos of the Rouse Hill clinic. More can be added as they come in.' },
     { page: 'index.html', target: q('#location'), title: 'Location', body: 'Address, hours and a map, with one-tap directions.' },
     { page: 'index.html', target: q('#faq'), title: 'Common questions', body: 'Short answers to what patients ask most.' },
-    { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Swaps the hero for seasonal campaigns, like flu season or school holidays. Not shown to patients.' },
+    { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays, in the hero\'s photo slot. The question and search stay put. Not shown to patients.' },
     { page: 'index.html', target: q('#viewportSwitcher'), title: 'Device preview (demo tool)', body: 'Shows the site at tablet and mobile sizes without leaving your desk.' },
     { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, find care, directions and the menu are always one tap away.' },
 

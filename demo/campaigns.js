@@ -1,45 +1,41 @@
 /* Demo tool: campaign preview (demo branch only, loaded by demo/demo.js).
-   Swaps the homepage hero for seasonal campaigns, like flu season or school holidays. */
+   Shows seasonal campaigns, like flu season or school holidays, in the homepage hero's campaign slot. */
 (function () {
-  var heroHeadline = document.getElementById('heroHeadline');
-  if (!heroHeadline) return; // homepage only
+  if (!document.getElementById('heroFrame')) return; // homepage only
 
+  // Examples for client demos. The site's own SwiftCampaign slot does the displaying.
   var campaigns = [
     {
       id: 'default',
       label: 'Everyday care',
-      desc: 'The standard homepage hero (current)',
-      swatch: '#2C685E',
-      image: 'brand_assets/hero-doctor-patient.jpg',
-      imageAlt: 'A doctor sitting with an older patient',
-      headline: 'Is urgent care right for me?',
-      subhead: 'Search a symptom to see where to go. SWIFT treats urgent illness and injury for ages 3 months and up, with no referral needed.',
-      ctaText: 'Call (02) 8859 9099',
-      ctaHref: 'tel:0288599099'
+      desc: 'No campaign: the standard hero photo',
+      swatch: '#2C685E'
     },
     {
       id: 'flu',
       label: 'Flu shot season',
       desc: 'Seasonal vaccination campaign',
       swatch: '#4B9587',
+      title: 'Flu shots are here',
+      text: 'Protect yourself and your family this flu season.',
+      ctaText: 'Request a flu shot',
+      ctaHref: 'request-appointment.html',
       image: 'brand_assets/Flu_shot.jpeg',
-      imageAlt: 'Flu vaccination campaign',
-      headline: 'Flu shots, walk in today.',
-      subhead: 'Protect yourself and your family this flu season. No appointment needed — just walk in during opening hours.',
-      ctaText: 'Book your flu shot',
-      ctaHref: 'request-appointment.html'
+      imageAlt: 'Flu vaccine illustration: a medical cross, vial and syringe',
+      imagePos: '76% 50%'
     },
     {
       id: 'kids',
       label: 'School holidays',
       desc: 'Paediatric-focused campaign',
       swatch: '#377E71',
+      title: 'School holidays? We\u2019ve got the kids covered.',
+      text: 'From sprains to fevers, we treat children 3 months and up, every day of the holidays.',
+      ctaText: 'See kids\u2019 care',
+      ctaHref: 'services.html#paediatrics',
       image: 'brand_assets/school_holidays.jpeg',
-      imageAlt: 'School holidays campaign',
-      headline: 'School holidays? We’ve got the kids covered.',
-      subhead: 'From sprains to fevers, we treat children 3 months and up — every day of the holidays.',
-      ctaText: 'Walk in today',
-      ctaHref: '#right-care'
+      imageAlt: 'School holidays illustration: a first-aid kit, skateboard and backpack',
+      imagePos: '72% 50%'
     }
   ];
 
@@ -75,17 +71,10 @@
   var closeBtn = document.getElementById('campaignModalClose');
   var list = document.getElementById('campaignList');
 
-  var heroImg = document.getElementById('heroImg');
-  var heroSubhead = document.getElementById('heroSubhead');
-  var heroCta = document.getElementById('heroPrimaryCta');
-
   function applyCampaign(c) {
-    heroImg.src = c.image;
-    heroImg.alt = c.imageAlt;
-    heroHeadline.textContent = c.headline;
-    heroSubhead.textContent = c.subhead;
-    heroCta.textContent = c.ctaText;
-    heroCta.setAttribute('href', c.ctaHref);
+    if (!window.SwiftCampaign) return;
+    if (c.id === 'default') window.SwiftCampaign.clear();
+    else window.SwiftCampaign.show(c);
   }
 
   campaigns.forEach(function (c) {
