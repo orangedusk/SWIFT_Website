@@ -172,8 +172,9 @@
   /* Seasonal campaign slot: the hero question and search never change; a campaign takes the photo side */
   .campaign-card { display: none; }
   .has-campaign #heroCaption, .has-campaign #heroBadge, .has-campaign .hero-shade { display: none; }
-  @media (min-width: 1024px) { .has-campaign #campaignCard { display: block; } }
-  @media (max-width: 1023px) { .has-campaign #campaignMobile { display: flex; } }
+  .has-campaign #campaignCard { display: block; }
+  /* Give the art room above the card on smaller screens */
+  @media (max-width: 1023px) { .has-campaign #heroFrame { height: 520px; } }
   /* Layering: base (paper) -> surface (white / foam cards) -> floating (hero badge, verdict) */
   .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
   .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
@@ -334,16 +335,6 @@
           </a>
         </div>
 
-        <!-- Seasonal campaign card (mobile and tablet). Filled by SwiftCampaign.show(). -->
-        <a id="campaignMobile" class="campaign-card group mt-7 rounded-[20px] bg-gradient-to-br from-foam to-mint p-3 pr-5 items-center gap-4 focus-ring active:scale-[0.98] transition-transform duration-300" href="#">
-          <span class="relative shrink-0 w-24 h-24 rounded-[14px] overflow-hidden bg-white"><img class="campaign-img absolute inset-0 w-full h-full object-cover" alt=""></span>
-          <span class="min-w-0">
-            <span class="campaign-title block font-display font-semibold text-lg leading-snug text-ink"></span>
-            <span class="campaign-text block text-sm text-ink/70 mt-1 leading-snug"></span>
-            <span class="campaign-cta block text-sm font-medium text-teal700 group-hover:text-teal900 mt-2"></span>
-          </span>
-        </a>
-
         <div class="hero-in mt-10 lg:mt-auto lg:pt-10 grid sm:grid-cols-2 gap-4" style="animation-delay:.55s">
           <div class="rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 flex items-start gap-3">
             <span class="relative mt-1.5 flex h-2.5 w-2.5 shrink-0">
@@ -378,9 +369,9 @@
             <span class="block font-display font-semibold text-lg">Walk in, no appointment needed</span>
             <span class="block text-sm text-white/80 mt-0.5">Open every day, 10am to 10pm</span>
           </p>
-          <!-- Seasonal campaign card (desktop). Filled by SwiftCampaign.show(); hidden when no campaign runs. -->
-          <div id="campaignCard" class="campaign-card absolute left-4 right-4 bottom-4 rounded-[20px] bg-white/95 backdrop-blur p-6 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_18px_40px_-20px_rgba(30,69,63,0.45)]">
-            <p class="campaign-title font-display font-bold text-2xl leading-[1.12] tracking-[-0.02em] text-ink"></p>
+          <!-- Seasonal campaign card, all screen sizes. Filled by SwiftCampaign.show(); hidden when no campaign runs. -->
+          <div id="campaignCard" class="campaign-card absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4 sm:max-w-md rounded-[20px] bg-white/95 backdrop-blur p-5 sm:p-6 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_18px_40px_-20px_rgba(30,69,63,0.45)]">
+            <p class="campaign-title font-display font-bold text-xl sm:text-2xl leading-[1.12] tracking-[-0.02em] text-ink"></p>
             <p class="campaign-text mt-2 text-[15px] text-ink/70 leading-relaxed"></p>
             <a class="campaign-cta focus-ring spring mt-4 inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300" href="#"></a>
           </div>
@@ -1273,8 +1264,8 @@
     renderTile();
   })();
 
-  // Seasonal campaign slot. The hero question and search always stay; a campaign takes the photo side
-  // (and a compact card under the call button on smaller screens). To run one on the live site, set
+  // Seasonal campaign slot. The hero question and search always stay; a campaign takes the photo frame
+  // (art plus a card with title, text and button) at every screen size. To run one on the live site, set
   // SITE_CAMPAIGN to { title, text, ctaText, ctaHref, image, imageAlt, imagePos: '70% 50%' }.
   // Campaign art works best tall (about 4:5). null shows the everyday photo.
   var SITE_CAMPAIGN = null;
@@ -1294,9 +1285,7 @@
         card.querySelector('.campaign-title').textContent = c.title;
         card.querySelector('.campaign-text').textContent = c.text;
         card.querySelector('.campaign-cta').textContent = c.ctaText;
-        (card.tagName === 'A' ? card : card.querySelector('.campaign-cta')).setAttribute('href', c.ctaHref);
-        var thumb = card.querySelector('.campaign-img');
-        if (thumb) { thumb.src = c.image; thumb.style.objectPosition = c.imagePos || '50% 50%'; }
+        card.querySelector('.campaign-cta').setAttribute('href', c.ctaHref);
       });
       section.classList.add('has-campaign');
     }
