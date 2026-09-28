@@ -1,11 +1,19 @@
 /* Demo tools loader (demo branch only, never on main).
    Each page includes just this one script. It sets up the shared "Demo tools" group in the
    mobile menu, then loads each tool, which builds its own buttons and dialogs.
-   Tools are skipped inside the viewport-preview iframe so the preview shows the real site. */
+   Inside the viewport-preview iframe no controls are added, so the preview shows the real site;
+   only the campaign follower loads, so a campaign picked outside also shows in the preview. */
 (function () {
-  if (window.top !== window.self) return;
-
   var base = (document.currentScript && document.currentScript.src || '').replace(/[^/]*$/, '');
+
+  // Inside the tablet/mobile preview: show the real site, but let it follow the campaign picked outside
+  if (window.top !== window.self) {
+    window.SwiftDemoEmbedded = true;
+    var follower = document.createElement('script');
+    follower.src = base + 'campaigns.js';
+    document.body.appendChild(follower);
+    return;
+  }
   var group = null;
 
   // On small screens floating buttons would cover page content, so tools add an entry to the mobile menu instead

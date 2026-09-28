@@ -45,6 +45,16 @@
   var overlay = document.getElementById('viewportOverlay');
   var frame = document.getElementById('viewportFrame');
   var label = document.getElementById('viewportLabel');
+
+  // Campaigns can be switched while a device preview is open (homepage only)
+  if (window.SwiftDemoCampaigns) {
+    var campaignBtn = document.createElement('button');
+    campaignBtn.type = 'button';
+    campaignBtn.className = 'focus-ring inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 text-white px-3 py-1.5 text-xs transition-colors';
+    campaignBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Preview campaigns';
+    campaignBtn.addEventListener('click', window.SwiftDemoCampaigns.open);
+    label.parentNode.insertBefore(campaignBtn, label.nextSibling);
+  }
   var closeBtn = document.getElementById('viewportClose');
 
   var sizes = {
