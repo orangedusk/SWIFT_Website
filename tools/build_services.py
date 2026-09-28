@@ -1,4 +1,4 @@
-import sys, re, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from build_page import build, ROOT
+import sys, re, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from build_page import build, ROOT, intro, CARD, H2, BTN_PRIMARY, BTN_SECONDARY
 
 # Service icons, kept here so homepage redesigns can't break this build
 ICONS = {
@@ -16,16 +16,15 @@ def icon_for(slug):
     return ICONS[slug]
 DENTAL_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c-2.2 0-3.6 1-4.6 1-1.3 0-2.4 1.3-2.4 3.4 0 3 1 5.7 1.6 8.3.4 1.7.8 3.3 2 3.3 1.3 0 1.4-2.6 1.9-4.4.3-1.1.7-2 1.5-2s1.2.9 1.5 2c.5 1.8.6 4.4 1.9 4.4 1.2 0 1.6-1.6 2-3.3.6-2.6 1.6-5.3 1.6-8.3 0-2.1-1.1-3.4-2.4-3.4-1 0-2.4-1-4.6-1Z" stroke="#2C685E" stroke-width="1.4" stroke-linejoin="round"/></svg>'
 
-WALK = ('Walk in', 'bg-teal700 text-white')
-APPT = ('By appointment', 'bg-mint text-teal900 border border-teal700/25')
-INDEP = ('Independent provider', 'bg-white text-ink/70 border border-line')
+WALK = ('Walk in', 'chip-solid')
+APPT = ('By appointment', '')
+INDEP = ('Independent provider', 'chip-quiet')
 
-def tag(t): return '<span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 %s">%s</span>' % (t[1], t[0])
+def tag(t): return '<span class="chip %s">%s</span>' % (t[1], t[0])
 
 def btn(href, label, primary=True):
-    cls = ('bg-teal700 hover:bg-teal600 text-white' if primary else 'border border-teal700 text-teal900 hover:bg-mint')
     ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
-    return ('<a href="%s"%s class="focus-ring spring inline-flex items-center rounded-full %s hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">%s</a>' % (href, ext, cls, label))
+    return '<a href="%s"%s class="%s">%s</a>' % (href, ext, BTN_PRIMARY if primary else BTN_SECONDARY, label)
 
 DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155'
 CALL = btn('tel:0288599099', 'Call (02) 8859 9099', False)
@@ -33,12 +32,12 @@ CALL = btn('tel:0288599099', 'Call (02) 8859 9099', False)
 def section(sid, name, icon, tags, summary, points, ctas, extra=''):
     pts = ''.join('<li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>%s</span></li>' % p for p in points)
     return '''
-        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-8">
           <div class="flex items-start gap-4">
-            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint">%s</span>
+            <span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-foam to-mint">%s</span>
             <div class="flex-1 min-w-0">
               <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">%s</h2>
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-[-0.02em] text-ink">%s</h2>
                 <div class="flex flex-wrap gap-1.5">%s</div>
               </div>
               <p class="mt-2 text-ink/70 leading-relaxed">%s</p>
@@ -63,8 +62,8 @@ SWIFT_SERVICES = [
      'Walk in with a new injury; follow-up visits are booked'],
     [btn('request-appointment.html?service=ortho', 'Request appointment'), CALL],
     extra='''
-          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
-            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Our orthopaedic surgeons
+          <details class="svc-more mt-5 rounded-[14px] bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-[14px] hover:bg-mint/60 transition-colors">Our orthopaedic surgeons
               <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <ul class="px-4 pb-4 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
@@ -99,7 +98,7 @@ SWIFT_SERVICES = [
      'Transfer to a nearby hospital if you need admission'],
     [CALL],
     extra='''
-          <p class="mt-5 flex gap-2.5 rounded-xl bg-urgent/[0.07] border border-urgent/20 px-4 py-3 text-[15px] text-urgentDk">
+          <p class="mt-5 flex gap-2.5 rounded-[14px] bg-urgent/[0.07] border border-urgent/20 px-4 py-3 text-[15px] text-urgentDk">
             <svg class="shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>Severe or crushing chest pain, or chest pain with shortness of breath, can be life-threatening. <a href="tel:000" class="font-semibold underline underline-offset-2 focus-ring rounded">Call 000</a>.</span>
           </p>'''),
@@ -111,8 +110,8 @@ SWIFT_SERVICES = [
      'Open 10am to 10pm, every day'],
     [btn('request-appointment.html?service=infusion', 'Request appointment'), btn('fees.html#infusion', 'See infusion fees', False)],
     extra='''
-          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
-            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Before a zoledronate infusion
+          <details class="svc-more mt-5 rounded-[14px] bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-[14px] hover:bg-mint/60 transition-colors">Before a zoledronate infusion
               <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <ul class="px-4 pb-4 space-y-1.5 text-sm text-ink/75 list-disc pl-8">
@@ -150,23 +149,11 @@ INDEPENDENT = [
 ]
 
 index_links = [('emergency','Emergency'),('orthopaedics','Orthopaedics'),('sports','Sports injuries'),('paediatrics','Paediatrics'),('cardiology','Cardiology'),('infusion','Infusions'),('physiotherapy','Physiotherapy'),('pathology','Pathology'),('imaging','Imaging'),('dental','Dental')]
-jump = '\n'.join('          <li><a href="#%s" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">%s</a></li>' % l for l in index_links)
+jump = '\n'.join('          <li><a href="#%s" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">%s</a></li>' % l for l in index_links)
 
 main = '''
-  <!-- Page intro -->
-  <section class="bg-mint/60 border-b border-line">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
-      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/65 mb-5" style="animation-delay:.02s">
-        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
-        <span aria-hidden="true" class="mx-1.5">/</span>
-        <span class="text-ink/80" aria-current="page">Services</span>
-      </nav>
-      <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink" style="animation-delay:.08s">Services</h1>
-      <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-2xl" style="animation-delay:.2s">Everything we treat and offer at Rouse Hill, led by emergency physicians and working with specialists.</p>
-    </div>
-  </section>
-
-  <section class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+%s
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24">
     <div class="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 items-start">
       <nav aria-label="Services on this page" class="lg:sticky lg:top-[132px] -mx-5 px-5 lg:mx-0 lg:px-0 overflow-x-auto">
         <ul class="flex lg:flex-col gap-2 lg:gap-1 text-[15px] whitespace-nowrap pb-1">
@@ -180,8 +167,8 @@ main = '''
         </div>
 
         <div class="mt-14">
-          <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Also in this building</h2>
-          <p class="text-ink/70 mt-1 mb-5">Independent practices, not part of SWIFT's clinical team.</p>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Also in this building</h2>
+          <p class="text-ink/70 mt-2 mb-6 leading-[1.7]">Independent practices, not part of SWIFT's clinical team. Book with them directly.</p>
           <div class="space-y-5">
 %s
           </div>
@@ -189,7 +176,7 @@ main = '''
       </div>
     </div>
   </section>
-''' % (jump, '\n'.join(SWIFT_SERVICES), '\n'.join(INDEPENDENT))
+''' % (intro('Services', 'Services', 'Everything we treat and offer at Rouse Hill, led by emergency physicians and working with specialists.'), jump, '\n'.join(SWIFT_SERVICES), '\n'.join(INDEPENDENT))
 
 css = '''
   /* Services */
