@@ -1,0 +1,198 @@
+import sys, re, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from build_page import build, ROOT
+
+home = open(ROOT + 'index.html').read()
+def icon_for(slug):
+    # Reuse the homepage tile icon for each service, recoloured to the page's teal
+    NEW = {'emergency-health-care':'emergency','specialty-orthopaedics':'orthopaedics','sports-injuries':'sports','paediatrics':'paediatrics','cardiology':'cardiology','infusion-clinic':'infusion','physiotherapy':'physiotherapy','pathology':'pathology','imaging':'imaging'}
+    i = home.index('services.html#' + NEW[slug] + '"')
+    svg = re.search(r'<svg.*?</svg>', home[i:], re.S).group(0)
+    return svg.replace('stroke="#fff"', 'stroke="#2C685E"')
+DENTAL_ICON = re.search(r'<svg width="22"[^>]*>(?:(?!</svg>).)*M12 3c-2\.2.*?</svg>', home, re.S).group(0)
+
+WALK = ('Walk in', 'bg-teal700 text-white')
+APPT = ('By appointment', 'bg-mint text-teal900 border border-teal700/25')
+INDEP = ('Independent provider', 'bg-white text-ink/70 border border-line')
+
+def tag(t): return '<span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 %s">%s</span>' % (t[1], t[0])
+
+def btn(href, label, primary=True):
+    cls = ('bg-teal700 hover:bg-teal600 text-white' if primary else 'border border-teal700 text-teal900 hover:bg-mint')
+    ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
+    return ('<a href="%s"%s class="focus-ring spring inline-flex items-center rounded-full %s hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">%s</a>' % (href, ext, cls, label))
+
+DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155'
+CALL = btn('tel:0288599099', 'Call (02) 8859 9099', False)
+
+def section(sid, name, icon, tags, summary, points, ctas, extra=''):
+    pts = ''.join('<li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>%s</span></li>' % p for p in points)
+    return '''
+        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint">%s</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">%s</h2>
+                <div class="flex flex-wrap gap-1.5">%s</div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">%s</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed">%s</ul>%s
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3">%s</div>
+        </article>''' % (sid, icon, name, ''.join(tag(t) for t in tags), summary, pts, extra, ''.join(ctas))
+
+SWIFT_SERVICES = [
+  section('emergency', 'Emergency &amp; urgent care', icon_for('emergency-health-care'), [WALK],
+    'Emergency physicians treat minor injuries through to severe, non-life-threatening illness, usually faster than a hospital ED.',
+    ['A triage nurse assesses you on arrival, using the Australian Triage Scale',
+     'You\'re then seen by a doctor trained in emergency medicine',
+     'If you need hospital care, we arrange your transfer to a nearby emergency department',
+     'Scans and pathology are in the same building'],
+    [btn(DIRECTIONS, 'Get directions'), CALL]),
+  section('orthopaedics', 'Fractures &amp; orthopaedics', icon_for('specialty-orthopaedics'), [WALK, APPT],
+    'Orthopaedic surgeons follow up fractures and joint injuries, and can arrange surgery at nearby private hospitals if you need it.',
+    ['Specialist follow-up within 24 hours if needed',
+     'Hip, knee, shoulder, elbow, hand and wrist, and foot and ankle',
+     'Walk in with a new injury; follow-up visits are booked'],
+    [btn('request-appointment.html?service=ortho', 'Request appointment'), CALL],
+    extra='''
+          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Our orthopaedic surgeons
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="px-4 pb-4 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
+              <li><span class="block text-ink font-medium">Dr Mohammed Baba</span><span class="text-ink/60">Shoulder, elbow, wrist and hand</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Roderick Kuo</span><span class="text-ink/60">Foot and ankle, trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Adrian Low</span><span class="text-ink/60">Shoulder, knee and trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Jun Nagamori</span><span class="text-ink/60">Sports knee surgery</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Nicholas C Smith</span><span class="text-ink/60">Hand and wrist</span></li>
+              <li><span class="block text-ink font-medium">Dr Louis Shidiak</span><span class="text-ink/60">Hip and knee surgery, sports injuries</span></li>
+              <li><span class="block text-ink font-medium">A/Prof James Sullivan</span><span class="text-ink/60">Hip and knee surgery, joint replacement</span></li>
+              <li><span class="block text-ink font-medium">Dr Timothy Yeoh</span><span class="text-ink/60">Knee and shoulder surgery</span></li>
+            </ul>
+          </details>'''),
+  section('sports', 'Sports injuries', icon_for('sports-injuries'), [WALK],
+    'Emergency physicians, orthopaedic surgeons and physiotherapists treat sports injuries and plan your return to play.',
+    ['Saturday morning sports injury clinic, 10am to 1pm',
+     'X-ray, ultrasound and MRI to find the extent of the injury',
+     'A recovery plan, with physiotherapy if you need it',
+     'Advice on preventing the next injury'],
+    [btn(DIRECTIONS, 'Get directions'), CALL]),
+  section('paediatrics', 'Paediatrics', icon_for('paediatrics'), [WALK, APPT],
+    'Urgent care for children 3 months and up, with follow-up clinics so care doesn\'t stop when you go home.',
+    ['Walk in when your child is sick or hurt',
+     'Paediatric follow-up clinics, booked ahead',
+     'Specialist care through Children\'s Health Hub, run by paediatricians affiliated with The Children\'s Hospital at Westmead',
+     'Newborns to teenagers, including allergy, gastroenterology, surgery and dietetics'],
+    [btn('request-appointment.html', 'Request appointment'), CALL]),
+  section('cardiology', 'Cardiology', icon_for('cardiology'), [WALK],
+    'A fast-track pathway for low-risk chest pain, once our emergency team has assessed you as safe.',
+    ['Urgent review by a specialist cardiologist',
+     'Exercise stress test and echocardiogram',
+     'Transfer to a nearby hospital if you need admission'],
+    [CALL],
+    extra='''
+          <p class="mt-5 flex gap-2.5 rounded-xl bg-urgent/[0.07] border border-urgent/20 px-4 py-3 text-[15px] text-urgentDk">
+            <svg class="shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Severe or crushing chest pain, or chest pain with shortness of breath, can be life-threatening. <a href="tel:000" class="font-semibold underline underline-offset-2 focus-ring rounded">Call 000</a>.</span>
+          </p>'''),
+  section('infusion', 'Infusion clinic', icon_for('infusion-clinic'), [APPT],
+    'Infusions for adults and children in a monitored setting, supervised by a senior emergency physician.',
+    ['<strong class="font-medium text-ink">Iron infusion</strong>: about 1 hour. Bring your Ferinject from the pharmacy, or we can supply it',
+     '<strong class="font-medium text-ink">Zoledronate</strong> for osteoporosis or high calcium: under 1 hour',
+     '<strong class="font-medium text-ink">IV antibiotics</strong> after a SWIFT visit or on your GP\'s prescription',
+     'Open 10am to 10pm, every day'],
+    [btn('request-appointment.html?service=infusion', 'Request appointment'), btn('fees.html#infusion', 'See infusion fees', False)],
+    extra='''
+          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Before a zoledronate infusion
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="px-4 pb-4 space-y-1.5 text-sm text-ink/75 list-disc pl-8">
+              <li>Stop oral osteoporosis tablets (oral bisphosphonates)</li>
+              <li>Keep taking daily calcium and vitamin D</li>
+              <li>Finish any dental work first</li>
+              <li>Drink plenty of fluids on the day</li>
+            </ul>
+          </details>'''),
+  section('physiotherapy', 'Physiotherapy', icon_for('physiotherapy'), [APPT],
+    'On-site physiotherapists follow up muscle, bone and joint injuries, working alongside our orthopaedic team.',
+    ['Recovery after an injury or procedure',
+     'Follow-up for fractures, sprains and sports injuries'],
+    [btn('request-appointment.html?service=physio', 'Request appointment'), CALL]),
+  section('pathology', 'Pathology', icon_for('pathology'), [WALK],
+    'An in-house lab collects samples during your visit, so results come back faster and treatment isn\'t held up.',
+    ['Blood and other tests taken on-site',
+     'Results go straight to your SWIFT doctor'],
+    [btn(DIRECTIONS, 'Get directions'), CALL]),
+]
+
+INDEPENDENT = [
+  section('imaging', 'Imaging &amp; radiology', icon_for('imaging'), [INDEP],
+    'X-ray, CT, ultrasound and MRI in the same building, run by Imaging Specialists, an independent practice.',
+    ['X-ray and CT every day, 10am to 9pm',
+     'Ultrasound weekdays 10am to 5pm, plus after-hours sessions',
+     'MRI, subject to availability',
+     'Interventional radiology for back, shoulder and joint pain'],
+    [btn('tel:0286148400', 'Call Imaging Specialists'), btn('fees.html#radiology', 'See scan fees', False)]),
+  section('dental', 'Dental', DENTAL_ICON, [INDEP],
+    'An independent dental practice shares our building, for general and emergency dental care.',
+    ['Toothache, broken teeth and dental emergencies',
+     'Book with the dental practice directly'],
+    []).replace('<div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"></div>', ''),
+]
+
+index_links = [('emergency','Emergency'),('orthopaedics','Orthopaedics'),('sports','Sports injuries'),('paediatrics','Paediatrics'),('cardiology','Cardiology'),('infusion','Infusions'),('physiotherapy','Physiotherapy'),('pathology','Pathology'),('imaging','Imaging'),('dental','Dental')]
+jump = '\n'.join('          <li><a href="#%s" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">%s</a></li>' % l for l in index_links)
+
+main = '''
+  <!-- Page intro -->
+  <section class="bg-mint/60 border-b border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
+        <span aria-hidden="true" class="mx-1.5">/</span>
+        <span class="text-ink/80" aria-current="page">Services</span>
+      </nav>
+      <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink" style="animation-delay:.08s">Services</h1>
+      <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-2xl" style="animation-delay:.2s">Everything we treat and offer at Rouse Hill, led by emergency physicians and working with specialists.</p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+    <div class="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 items-start">
+      <nav aria-label="Services on this page" class="lg:sticky lg:top-[132px] -mx-5 px-5 lg:mx-0 lg:px-0 overflow-x-auto">
+        <ul class="flex lg:flex-col gap-2 lg:gap-1 text-[15px] whitespace-nowrap pb-1">
+%s
+        </ul>
+      </nav>
+
+      <div class="max-w-3xl">
+        <div class="space-y-5">
+%s
+        </div>
+
+        <div class="mt-14">
+          <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Also in this building</h2>
+          <p class="text-ink/60 mt-1 mb-5">Independent practices, not part of SWIFT's clinical team.</p>
+          <div class="space-y-5">
+%s
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+''' % (jump, '\n'.join(SWIFT_SERVICES), '\n'.join(INDEPENDENT))
+
+css = '''
+  /* Services */
+  .svc-more summary { list-style: none; cursor: pointer; }
+  .svc-more summary::-webkit-details-marker { display: none; }
+  .svc-more[open] .chev { transform: rotate(180deg); }
+  .svc:target { box-shadow: 0 0 0 2px #4B9587, 0 14px 28px -10px rgba(30,69,63,0.25); }
+'''
+
+build('services.html',
+      'Services — SWIFT Emergency &amp; Urgent Care, Rouse Hill',
+      'Emergency and urgent care, orthopaedics, sports injuries, paediatrics, cardiology, infusions, physiotherapy and pathology at SWIFT Rouse Hill.',
+      main, active='services.html', css=css)

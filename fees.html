@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fees — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
+<meta name="description" content="SWIFT fees for urgent care, infusions, wound care and on-site imaging, with and without Medicare. Walk-in facility fee $396 plus Medicare charges.">
+<link rel="icon" href="brand_assets/swift-icon-dark.png" type="image/png">
+
+<meta property="og:title" content="Fees — SWIFT Emergency & Urgent Care, Rouse Hill">
+<meta property="og:description" content="SWIFT fees for urgent care, infusions, wound care and on-site imaging, with and without Medicare. Walk-in facility fee $396 plus Medicare charges.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#182524',
+          teal900:  '#1E453F',
+          teal700:  '#2C685E',
+          teal600:  '#377E71',
+          teal500:  '#4B9587',
+          tealGlow: '#6FB3A3',
+          paper:    '#F6F8F7',
+          mint:     '#EAF1EF',
+          line:     '#D9E3E0',
+          urgent:   '#B23A3A',
+          urgentDk: '#8C2C2C',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Analytics: replace G-XXXXXXXXXX with the client's real GA4 Measurement ID before launch -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  body { background: #F6F8F7; }
+  ::selection { background: #6FB3A3; color: #182524; }
+  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-in { opacity: 0; animation: heroIn .8s cubic-bezier(.22,1,.36,1) forwards; }
+  .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+
+  /* Mobile menu */
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  #menuBtn [data-bar="top"] { transform: translateY(-5px); }
+  #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
+  #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
+  #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
+  #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
+
+</style>
+</head>
+
+<body class="font-body text-ink antialiased pb-[68px] lg:pb-0">
+<noscript><style>.hero-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<div id="top"></div>
+
+<!-- Emergency banner -->
+<div class="sticky top-0 z-50 bg-urgent text-white">
+  <a href="tel:000" class="focus-ring flex items-center justify-center gap-2 px-4 py-2.5 text-sm sm:text-base font-medium hover:bg-urgentDk transition-colors">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="shrink-0" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Life-threatening emergency? Call <strong class="font-bold">000</strong> now.</span>
+  </a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-[41px] sm:top-[45px] z-40 bg-paper/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded">
+      <img src="brand_assets/swift-icon-dark.png" alt="" class="h-9 w-9" aria-hidden="true">
+      <span class="font-display font-bold text-lg tracking-tight text-ink">SWIFT</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[15px]">
+      <a href="index.html#right-care" class="hover:text-teal700 focus-ring rounded">Find care</a>
+      <a href="services.html" class="hover:text-teal700 focus-ring rounded">Services</a>
+      <a href="fees.html" aria-current="page" class="text-teal700 font-medium hover:text-teal900 focus-ring rounded">Fees</a>
+      <a href="index.html#location" class="hover:text-teal700 focus-ring rounded">Location</a>
+      <a href="index.html#faq" class="hover:text-teal700 focus-ring rounded">FAQs</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:0288599099" class="hidden sm:inline-flex items-center gap-2 text-[15px] font-medium text-teal900 hover:text-teal700 focus-ring rounded">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        (02) 8859 9099
+      </a>
+      <a href="request-appointment.html" class="hidden sm:inline-flex focus-ring items-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-4 py-2 sm:px-5 sm:py-2.5 transition-colors active:scale-[0.97]">
+        Request appointment
+      </a>
+      <button id="menuBtn" type="button" class="lg:hidden focus-ring relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-mint active:bg-line" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="top"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-opacity duration-200" data-bar="mid"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.22,1,.36,1)] border-t border-transparent">
+    <div class="overflow-hidden">
+      <nav class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-1 text-[15px]">
+        <a href="index.html#right-care" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Find care</a>
+        <a href="services.html" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Services</a>
+        <a href="fees.html" aria-current="page" class="mobile-link py-2.5 text-teal700 font-medium hover:text-teal900 focus-ring rounded">Fees</a>
+        <a href="index.html#location" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Location</a>
+        <a href="index.html#faq" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">FAQs</a>
+        <div class="border-t border-line mt-2 pt-3 flex flex-col gap-3 sm:hidden">
+          <a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
+          <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request appointment</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile floating bottom bar -->
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+  <div class="grid grid-cols-4">
+    <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Call</span>
+    </a>
+    <a href="index.html#right-care" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-[11px] font-medium">Find care</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Directions</span>
+    </a>
+    <button type="button" id="bottomMenuBtn" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="text-[11px] font-medium">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Page intro -->
+  <section class="bg-mint/60 border-b border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
+        <span aria-hidden="true" class="mx-1.5">/</span>
+        <span class="text-ink/80" aria-current="page">Fees</span>
+      </nav>
+      <div class="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-end">
+        <div>
+          <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink" style="animation-delay:.08s">Fees</h1>
+          <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-xl" style="animation-delay:.2s">What you'll pay at SWIFT, with or without a Medicare card. No referral needed.</p>
+        </div>
+        <!-- Headline fee -->
+        <div class="hero-in relative overflow-hidden bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-6 sm:p-7 lg:w-[380px]" style="animation-delay:.3s">
+          <svg class="absolute -right-5 -top-5 w-28 h-28 text-teal900/[0.07]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2.5h10v19l-2.5-1.5-2 1.5-2-1.5-2.5 1.5V2.5Z"/><path d="M9.5 8h5M9.5 11.5h5M9.5 15h3"/></svg>
+          <p class="relative text-sm text-ink/55">Walk-in visit, facility fee</p>
+          <p class="relative font-display font-extrabold text-5xl tracking-tight text-ink mt-1">$396</p>
+          <p class="relative text-sm text-ink/55 mt-1">plus standard Medicare charges</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+    <div class="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 items-start">
+
+      <!-- Jump menu -->
+      <nav aria-label="On this page" class="lg:sticky lg:top-[132px] -mx-5 px-5 lg:mx-0 lg:px-0 overflow-x-auto">
+        <ul class="flex lg:flex-col gap-2 lg:gap-1 text-[15px] whitespace-nowrap pb-1">
+          <li><a href="#medicare" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Medicare</a></li>
+          <li><a href="#emergency" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Urgent care</a></li>
+          <li><a href="#infusion" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Infusions</a></li>
+          <li><a href="#wound" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Wound care</a></li>
+          <li><a href="#radiology" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Scans</a></li>
+          <li><a href="#extras" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Other costs</a></li>
+        </ul>
+      </nav>
+
+      <div class="space-y-12 max-w-3xl">
+
+      <!-- Medicare -->
+      <section id="medicare" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">How Medicare works at SWIFT</h2>
+        <div class="mt-4 grid sm:grid-cols-2 gap-4">
+          <div class="flex gap-3 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5">
+            <div class="w-9 h-9 rounded-lg bg-mint flex items-center justify-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 7" stroke="#2C685E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <p class="font-medium text-ink">With a valid Medicare card</p>
+              <p class="text-sm text-ink/65 mt-1 leading-relaxed">You get the Medicare part of your fee back. The facility fee is not covered.</p>
+            </div>
+          </div>
+          <div class="flex gap-3 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5">
+            <div class="w-9 h-9 rounded-lg bg-mint flex items-center justify-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#2C685E" stroke-width="1.6"/><path d="M9.5 9.5l5 5m0-5l-5 5" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="font-medium text-ink">Without a Medicare card</p>
+              <p class="text-sm text-ink/65 mt-1 leading-relaxed">You pay the full fee on the day: the SWIFT fee plus the Medicare-equivalent charges.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="emergency" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Emergency &amp; urgent care</h2>
+        <p class="text-ink/60 mt-1">Walk-in visits for illness and injury.</p>
+        <div class="mt-4 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] px-5 sm:px-6">
+          <table class="w-full">
+            <caption class="sr-only">Emergency and urgent care fees</caption>
+            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
+            <tbody>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">First visit</span><span class="block text-sm text-ink/55 mt-0.5">SWIFT facility fee</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$396</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Return visit for the same issue</span><span class="block text-sm text-ink/55 mt-0.5">Within 24 hours</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="inline-flex rounded-full bg-mint text-teal900 text-sm font-medium px-3 py-1">Bulk-billed</span></td>
+          </tr>
+          <tr class="align-top">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Return visit for the same issue</span><span class="block text-sm text-ink/55 mt-0.5">2 to 7 days later</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$150</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="infusion" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Infusion clinic</h2>
+        <p class="text-ink/60 mt-1">By appointment.</p>
+        <div class="mt-4 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] px-5 sm:px-6">
+          <table class="w-full">
+            <caption class="sr-only">Infusion clinic fees</caption>
+            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
+            <tbody>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Iron infusion</span><span class="block text-sm text-ink/55 mt-0.5">You bring your own Ferinject or iron medicine</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$246</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Iron infusion</span><span class="block text-sm text-ink/55 mt-0.5">We supply Ferinject 1g for $77</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$246 + $77</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">IV antibiotics</span><span class="block text-sm text-ink/55 mt-0.5">After a SWIFT consultation, or prescribed by your GP</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$150</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Other infusions</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><a href="tel:0288599099" class="focus-ring rounded text-[15px] font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700">Call us</a></td>
+          </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="wound" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Wound care clinic</h2>
+        
+        <div class="mt-4 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] px-5 sm:px-6">
+          <table class="w-full">
+            <caption class="sr-only">Wound care clinic fees</caption>
+            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
+            <tbody>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Simple wound care or dressing</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$80</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Complex wound care or dressing</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$140</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+          <tr class="align-top">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Stitches removal</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="font-display font-bold text-lg text-ink tabular-nums">$80</span> <span class="block sm:inline text-sm font-normal text-ink/55">+ Medicare</span></td>
+          </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="radiology" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Scans and imaging</h2>
+        <p class="text-ink/60 mt-1">Provided on-site by Imaging Specialists, an independent practice. Questions about scans: <a href="tel:0286148400" class="focus-ring rounded font-medium text-teal700 hover:text-teal900">(02) 8614 8400</a>.</p>
+        <div class="mt-4 bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] px-5 sm:px-6">
+          <table class="w-full">
+            <caption class="sr-only">Radiology hours and fees for patients with Medicare</caption>
+            <thead><tr class="border-b border-line text-sm text-ink/50"><th scope="col" class="text-left font-normal py-3">Scan and hours</th><th scope="col" class="text-right font-normal py-3">With Medicare</th></tr></thead>
+            <tbody>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">X-ray and CT</span><span class="block text-sm text-ink/55 mt-0.5">Every day, 10am to 9pm</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="inline-flex rounded-full bg-mint text-teal900 text-sm font-medium px-3 py-1">Bulk-billed</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Ultrasound</span><span class="block text-sm text-ink/55 mt-0.5">Monday to Friday, 10am to 5pm</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="inline-flex rounded-full bg-mint text-teal900 text-sm font-medium px-3 py-1">Bulk-billed</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Ultrasound, after hours</span><span class="block text-sm text-ink/55 mt-0.5">Monday to Friday, 5pm to 8pm</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="text-[15px] text-ink/70">Extra charges</span></td>
+          </tr>
+          <tr class="align-top border-b border-line">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">Ultrasound, weekends</span><span class="block text-sm text-ink/55 mt-0.5">Saturday and Sunday, subject to availability</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="text-[15px] text-ink/70">Extra charges</span></td>
+          </tr>
+          <tr class="align-top">
+            <th scope="row" class="text-left font-normal py-4 pr-4"><span class="text-[15px] text-ink">MRI</span><span class="block text-sm text-ink/55 mt-0.5">Subject to availability</span></th>
+            <td class="text-right py-4 whitespace-nowrap"><span class="text-[15px] text-ink/70">Extra charges</span></td>
+          </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-sm text-ink/60">Without Medicare, extra charges apply to all scans. These fees apply to patients seen at SWIFT.</p>
+      </section>
+
+      <!-- Other costs -->
+      <section id="extras" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Other costs</h2>
+        <p class="text-ink/70 mt-2 leading-relaxed">Depending on your treatment, you may need items like crutches or a moon boot. These cost extra.</p>
+      </section>
+
+      <!-- Questions -->
+      <div class="rounded-2xl bg-teal900 text-white p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-5 justify-between shadow-[0_24px_48px_-24px_rgba(30,69,63,0.6)]">
+        <div>
+          <p class="font-display font-bold text-xl">Questions about fees?</p>
+          <p class="text-white/75 mt-1">Call us before you come in and we'll talk you through it.</p>
+        </div>
+        <a href="tel:0288599099" class="focus-ring spring shrink-0 inline-flex items-center justify-center rounded-full bg-white text-teal900 hover:bg-mint hover:scale-[1.03] font-medium px-6 py-3 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative bg-ink text-white overflow-hidden">
+  <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
+      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <img src="brand_assets/swift-icon-white.png" alt="" class="h-8 w-8" aria-hidden="true">
+        <span class="font-display font-bold text-lg">SWIFT</span>
+      </div>
+      <p class="text-white/55 text-sm mt-4 max-w-sm leading-relaxed">
+        Emergency-physician-led urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
+      </p>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Explore</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="index.html#right-care" class="hover:text-white focus-ring rounded">Find care</a></li>
+        <li><a href="services.html" class="hover:text-white focus-ring rounded">Services</a></li>
+        <li><a href="fees.html" class="hover:text-white focus-ring rounded">Fees</a></li>
+        <li><a href="team.html" class="hover:text-white focus-ring rounded">Our team</a></li>
+        <li><a href="index.html#location" class="hover:text-white focus-ring rounded">Location</a></li>
+        <li><a href="index.html#faq" class="hover:text-white focus-ring rounded">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Contact</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="tel:0288599099" class="hover:text-white focus-ring rounded">(02) 8859 9099</a></li>
+        <li><a href="mailto:info@swifteuc.com.au" class="hover:text-white focus-ring rounded">info@swifteuc.com.au</a></li>
+        <li>G38, 32 Civic Way, Rouse Hill NSW 2155</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
+      <p>© 2026 SWIFT Emergency & Urgent Care. All rights reserved.</p>
+      <p>Life-threatening emergency? Call 000.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var bottomBtn = document.getElementById('bottomMenuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    var triggers = bottomBtn ? [btn, bottomBtn] : [btn];
+
+    function closeMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (bottomBtn) bottomBtn.classList.remove('text-teal700');
+      menu.classList.remove('is-open');
+    }
+    function openMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'true'); });
+      if (bottomBtn) bottomBtn.classList.add('text-teal700');
+      menu.classList.add('is-open');
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+    });
+    menu.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
+<meta name="description" content="Emergency and urgent care, orthopaedics, sports injuries, paediatrics, cardiology, infusions, physiotherapy and pathology at SWIFT Rouse Hill.">
+<link rel="icon" href="brand_assets/swift-icon-dark.png" type="image/png">
+
+<meta property="og:title" content="Services — SWIFT Emergency & Urgent Care, Rouse Hill">
+<meta property="og:description" content="Emergency and urgent care, orthopaedics, sports injuries, paediatrics, cardiology, infusions, physiotherapy and pathology at SWIFT Rouse Hill.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#182524',
+          teal900:  '#1E453F',
+          teal700:  '#2C685E',
+          teal600:  '#377E71',
+          teal500:  '#4B9587',
+          tealGlow: '#6FB3A3',
+          paper:    '#F6F8F7',
+          mint:     '#EAF1EF',
+          line:     '#D9E3E0',
+          urgent:   '#B23A3A',
+          urgentDk: '#8C2C2C',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Analytics: replace G-XXXXXXXXXX with the client's real GA4 Measurement ID before launch -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  body { background: #F6F8F7; }
+  ::selection { background: #6FB3A3; color: #182524; }
+  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-in { opacity: 0; animation: heroIn .8s cubic-bezier(.22,1,.36,1) forwards; }
+  .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+
+  /* Mobile menu */
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  #menuBtn [data-bar="top"] { transform: translateY(-5px); }
+  #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
+  #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
+  #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
+  #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
+
+
+  /* Services */
+  .svc-more summary { list-style: none; cursor: pointer; }
+  .svc-more summary::-webkit-details-marker { display: none; }
+  .svc-more[open] .chev { transform: rotate(180deg); }
+  .svc:target { box-shadow: 0 0 0 2px #4B9587, 0 14px 28px -10px rgba(30,69,63,0.25); }
+</style>
+</head>
+
+<body class="font-body text-ink antialiased pb-[68px] lg:pb-0">
+<noscript><style>.hero-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<div id="top"></div>
+
+<!-- Emergency banner -->
+<div class="sticky top-0 z-50 bg-urgent text-white">
+  <a href="tel:000" class="focus-ring flex items-center justify-center gap-2 px-4 py-2.5 text-sm sm:text-base font-medium hover:bg-urgentDk transition-colors">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="shrink-0" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Life-threatening emergency? Call <strong class="font-bold">000</strong> now.</span>
+  </a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-[41px] sm:top-[45px] z-40 bg-paper/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded">
+      <img src="brand_assets/swift-icon-dark.png" alt="" class="h-9 w-9" aria-hidden="true">
+      <span class="font-display font-bold text-lg tracking-tight text-ink">SWIFT</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[15px]">
+      <a href="index.html#right-care" class="hover:text-teal700 focus-ring rounded">Find care</a>
+      <a href="services.html" aria-current="page" class="text-teal700 font-medium hover:text-teal900 focus-ring rounded">Services</a>
+      <a href="fees.html" class="hover:text-teal700 focus-ring rounded">Fees</a>
+      <a href="index.html#location" class="hover:text-teal700 focus-ring rounded">Location</a>
+      <a href="index.html#faq" class="hover:text-teal700 focus-ring rounded">FAQs</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:0288599099" class="hidden sm:inline-flex items-center gap-2 text-[15px] font-medium text-teal900 hover:text-teal700 focus-ring rounded">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        (02) 8859 9099
+      </a>
+      <a href="request-appointment.html" class="hidden sm:inline-flex focus-ring items-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-4 py-2 sm:px-5 sm:py-2.5 transition-colors active:scale-[0.97]">
+        Request appointment
+      </a>
+      <button id="menuBtn" type="button" class="lg:hidden focus-ring relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-mint active:bg-line" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="top"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-opacity duration-200" data-bar="mid"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.22,1,.36,1)] border-t border-transparent">
+    <div class="overflow-hidden">
+      <nav class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-1 text-[15px]">
+        <a href="index.html#right-care" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Find care</a>
+        <a href="services.html" aria-current="page" class="mobile-link py-2.5 text-teal700 font-medium hover:text-teal900 focus-ring rounded">Services</a>
+        <a href="fees.html" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Fees</a>
+        <a href="index.html#location" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Location</a>
+        <a href="index.html#faq" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">FAQs</a>
+        <div class="border-t border-line mt-2 pt-3 flex flex-col gap-3 sm:hidden">
+          <a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
+          <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request appointment</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile floating bottom bar -->
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+  <div class="grid grid-cols-4">
+    <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Call</span>
+    </a>
+    <a href="index.html#right-care" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-[11px] font-medium">Find care</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Directions</span>
+    </a>
+    <button type="button" id="bottomMenuBtn" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/60 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="text-[11px] font-medium">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Page intro -->
+  <section class="bg-mint/60 border-b border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-14">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/55 mb-5" style="animation-delay:.02s">
+        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>
+        <span aria-hidden="true" class="mx-1.5">/</span>
+        <span class="text-ink/80" aria-current="page">Services</span>
+      </nav>
+      <h1 class="hero-in font-display font-extrabold text-[2.25rem] leading-[1.05] sm:text-5xl sm:leading-[1.05] tracking-tight text-ink" style="animation-delay:.08s">Services</h1>
+      <p class="hero-in mt-4 text-lg text-ink/70 leading-relaxed max-w-2xl" style="animation-delay:.2s">Everything we treat and offer at Rouse Hill, led by emergency physicians and working with specialists.</p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+    <div class="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 items-start">
+      <nav aria-label="Services on this page" class="lg:sticky lg:top-[132px] -mx-5 px-5 lg:mx-0 lg:px-0 overflow-x-auto">
+        <ul class="flex lg:flex-col gap-2 lg:gap-1 text-[15px] whitespace-nowrap pb-1">
+          <li><a href="#emergency" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Emergency</a></li>
+          <li><a href="#orthopaedics" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Orthopaedics</a></li>
+          <li><a href="#sports" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Sports injuries</a></li>
+          <li><a href="#paediatrics" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Paediatrics</a></li>
+          <li><a href="#cardiology" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Cardiology</a></li>
+          <li><a href="#infusion" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Infusions</a></li>
+          <li><a href="#physiotherapy" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Physiotherapy</a></li>
+          <li><a href="#pathology" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Pathology</a></li>
+          <li><a href="#imaging" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Imaging</a></li>
+          <li><a href="#dental" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/70 hover:text-teal700 hover:bg-mint active:scale-[0.97] transition-[transform,background-color,color] duration-200">Dental</a></li>
+        </ul>
+      </nav>
+
+      <div class="max-w-3xl">
+        <div class="space-y-5">
+
+        <article id="emergency" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Emergency &amp; urgent care</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">Emergency physicians treat minor injuries through to severe, non-life-threatening illness, usually faster than a hospital ED.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>A triage nurse assesses you on arrival, using the Australian Triage Scale</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>You're then seen by a doctor trained in emergency medicine</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>If you need hospital care, we arrange your transfer to a nearby emergency department</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Scans and pathology are in the same building</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Get directions</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="orthopaedics" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 16.5 16.5 7.5"/><circle cx="6" cy="18" r="2.3"/><circle cx="18" cy="6" r="2.3"/></g></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Fractures &amp; orthopaedics</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-mint text-teal900 border border-teal700/25">By appointment</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">Orthopaedic surgeons follow up fractures and joint injuries, and can arrange surgery at nearby private hospitals if you need it.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Specialist follow-up within 24 hours if needed</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Hip, knee, shoulder, elbow, hand and wrist, and foot and ankle</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Walk in with a new injury; follow-up visits are booked</span></li></ul>
+          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Our orthopaedic surgeons
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="px-4 pb-4 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
+              <li><span class="block text-ink font-medium">Dr Mohammed Baba</span><span class="text-ink/60">Shoulder, elbow, wrist and hand</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Roderick Kuo</span><span class="text-ink/60">Foot and ankle, trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Adrian Low</span><span class="text-ink/60">Shoulder, knee and trauma</span></li>
+              <li><span class="block text-ink font-medium">Dr Jun Nagamori</span><span class="text-ink/60">Sports knee surgery</span></li>
+              <li><span class="block text-ink font-medium">A/Prof Nicholas C Smith</span><span class="text-ink/60">Hand and wrist</span></li>
+              <li><span class="block text-ink font-medium">Dr Louis Shidiak</span><span class="text-ink/60">Hip and knee surgery, sports injuries</span></li>
+              <li><span class="block text-ink font-medium">A/Prof James Sullivan</span><span class="text-ink/60">Hip and knee surgery, joint replacement</span></li>
+              <li><span class="block text-ink font-medium">Dr Timothy Yeoh</span><span class="text-ink/60">Knee and shoulder surgery</span></li>
+            </ul>
+          </details>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="request-appointment.html?service=ortho" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Request appointment</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="sports" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="5" r="1.8"/><path d="M13 8l-3 3 1 4-3 4M13 8l3 1 2 5M10 11l3-1"/></g></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Sports injuries</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">Emergency physicians, orthopaedic surgeons and physiotherapists treat sports injuries and plan your return to play.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Saturday morning sports injury clinic, 10am to 1pm</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>X-ray, ultrasound and MRI to find the extent of the injury</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>A recovery plan, with physiotherapy if you need it</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Advice on preventing the next injury</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Get directions</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="paediatrics" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="7" cy="6.5" r="2"/><circle cx="17" cy="6.5" r="2"/><path d="M9.5 14c.7.8 1.6 1.2 2.5 1.2s1.8-.4 2.5-1.2"/></g><circle cx="9.5" cy="12" r=".7" fill="#2C685E" stroke="none"/><circle cx="14.5" cy="12" r=".7" fill="#2C685E" stroke="none"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Paediatrics</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-mint text-teal900 border border-teal700/25">By appointment</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">Urgent care for children 3 months and up, with follow-up clinics so care doesn't stop when you go home.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Walk in when your child is sick or hurt</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Paediatric follow-up clinics, booked ahead</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Specialist care through Children's Health Hub, run by paediatricians affiliated with The Children's Hospital at Westmead</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Newborns to teenagers, including allergy, gastroenterology, surgery and dietetics</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="request-appointment.html" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Request appointment</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="cardiology" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.6-9.3-9.3C1.2 7.6 3 4.5 6.2 4.2c1.8-.2 3.4.7 4.3 2.1a4.9 4.9 0 0 1 3-2c3.2-.5 5.4 2.6 4 5.9C15.8 15 12 20 12 20Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11h2.5l1.3-2.4L11.5 13l1.2-2h3.3" stroke="#4B9587" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Cardiology</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">A fast-track pathway for low-risk chest pain, once our emergency team has assessed you as safe.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Urgent review by a specialist cardiologist</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Exercise stress test and echocardiogram</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Transfer to a nearby hospital if you need admission</span></li></ul>
+          <p class="mt-5 flex gap-2.5 rounded-xl bg-urgent/[0.07] border border-urgent/20 px-4 py-3 text-[15px] text-urgentDk">
+            <svg class="shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Severe or crushing chest pain, or chest pain with shortness of breath, can be life-threatening. <a href="tel:000" class="font-semibold underline underline-offset-2 focus-ring rounded">Call 000</a>.</span>
+          </p>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="infusion" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4h8l-1 5H9L8 4Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 9h6l-.8 7.5a2.2 2.2 0 0 1-4.4 0L9 9Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 17v3" stroke="#2C685E" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="21.2" r=".9" fill="#4B9587" stroke="none"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Infusion clinic</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-mint text-teal900 border border-teal700/25">By appointment</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">Infusions for adults and children in a monitored setting, supervised by a senior emergency physician.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span><strong class="font-medium text-ink">Iron infusion</strong>: about 1 hour. Bring your Ferinject from the pharmacy, or we can supply it</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span><strong class="font-medium text-ink">Zoledronate</strong> for osteoporosis or high calcium: under 1 hour</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span><strong class="font-medium text-ink">IV antibiotics</strong> after a SWIFT visit or on your GP's prescription</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Open 10am to 10pm, every day</span></li></ul>
+          <details class="svc-more mt-5 rounded-xl bg-paper border border-line">
+            <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-xl hover:bg-mint/60 transition-colors">Before a zoledronate infusion
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="px-4 pb-4 space-y-1.5 text-sm text-ink/75 list-disc pl-8">
+              <li>Stop oral osteoporosis tablets (oral bisphosphonates)</li>
+              <li>Keep taking daily calcium and vitamin D</li>
+              <li>Finish any dental work first</li>
+              <li>Drink plenty of fluids on the day</li>
+            </ul>
+          </details>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="request-appointment.html?service=infusion" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Request appointment</a><a href="fees.html#infusion" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">See infusion fees</a></div>
+        </article>
+
+        <article id="physiotherapy" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16a7 7 0 0 1 12.6-4.2" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round"/><path d="M17.6 8.5 18.5 12l-3.6-.7" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5" cy="16" r="1.4" fill="#4B9587" stroke="none"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Physiotherapy</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-mint text-teal900 border border-teal700/25">By appointment</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">On-site physiotherapists follow up muscle, bone and joint injuries, working alongside our orthopaedic team.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Recovery after an injury or procedure</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Follow-up for fractures, sprains and sports injuries</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="request-appointment.html?service=physio" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Request appointment</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+
+        <article id="pathology" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 3h4M10.5 3v11.5a3.5 3.5 0 1 0 3 0V3" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 13.5h3" stroke="#4B9587" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Pathology</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-teal700 text-white">Walk in</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">An in-house lab collects samples during your visit, so results come back faster and treatment isn't held up.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Blood and other tests taken on-site</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Results go straight to your SWIFT doctor</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Get directions</a><a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call (02) 8859 9099</a></div>
+        </article>
+        </div>
+
+        <div class="mt-14">
+          <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Also in this building</h2>
+          <p class="text-ink/60 mt-1 mb-5">Independent practices, not part of SWIFT's clinical team.</p>
+          <div class="space-y-5">
+
+        <article id="imaging" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v10M9 9.5h6M9.5 12.5h5M10 15.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Imaging &amp; radiology</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-white text-ink/70 border border-line">Independent provider</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">X-ray, CT, ultrasound and MRI in the same building, run by Imaging Specialists, an independent practice.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>X-ray and CT every day, 10am to 9pm</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Ultrasound weekdays 10am to 5pm, plus after-hours sessions</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>MRI, subject to availability</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Interventional radiology for back, shoulder and joint pain</span></li></ul>
+          <div class="mt-6 pt-5 border-t border-line flex flex-wrap gap-3"><a href="tel:0286148400" class="focus-ring spring inline-flex items-center rounded-full bg-teal700 hover:bg-teal600 text-white hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">Call Imaging Specialists</a><a href="fees.html#radiology" class="focus-ring spring inline-flex items-center rounded-full border border-teal700 text-teal900 hover:bg-mint hover:scale-[1.03] font-medium text-[15px] px-5 py-2.5 transition-[transform,background-color] duration-300 active:scale-[0.97]">See scan fees</a></div>
+        </article>
+
+        <article id="dental" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)] p-5 sm:p-7">
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-mint"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c-2.2 0-3.6 1-4.6 1-1.3 0-2.4 1.3-2.4 3.4 0 3 1 5.7 1.6 8.3.4 1.7.8 3.3 2 3.3 1.3 0 1.4-2.6 1.9-4.4.3-1.1.7-2 1.5-2s1.2.9 1.5 2c.5 1.8.6 4.4 1.9 4.4 1.2 0 1.6-1.6 2-3.3.6-2.6 1.6-5.3 1.6-8.3 0-2.1-1.1-3.4-2.4-3.4-1 0-2.4-1-4.6-1Z" stroke="#2C685E" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Dental</h2>
+                <div class="flex flex-wrap gap-1.5"><span class="inline-flex rounded-full text-xs font-medium px-2.5 py-1 bg-white text-ink/70 border border-line">Independent provider</span></div>
+              </div>
+              <p class="mt-2 text-ink/70 leading-relaxed">An independent dental practice shares our building, for general and emergency dental care.</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px] text-ink/80 leading-relaxed"><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Toothache, broken teeth and dental emergencies</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Book with the dental practice directly</span></li></ul>
+          
+        </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative bg-ink text-white overflow-hidden">
+  <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
+      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <img src="brand_assets/swift-icon-white.png" alt="" class="h-8 w-8" aria-hidden="true">
+        <span class="font-display font-bold text-lg">SWIFT</span>
+      </div>
+      <p class="text-white/55 text-sm mt-4 max-w-sm leading-relaxed">
+        Emergency-physician-led urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
+      </p>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Explore</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="index.html#right-care" class="hover:text-white focus-ring rounded">Find care</a></li>
+        <li><a href="services.html" class="hover:text-white focus-ring rounded">Services</a></li>
+        <li><a href="fees.html" class="hover:text-white focus-ring rounded">Fees</a></li>
+        <li><a href="team.html" class="hover:text-white focus-ring rounded">Our team</a></li>
+        <li><a href="index.html#location" class="hover:text-white focus-ring rounded">Location</a></li>
+        <li><a href="index.html#faq" class="hover:text-white focus-ring rounded">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Contact</p>
+      <ul class="space-y-2 text-sm text-white/55">
+        <li><a href="tel:0288599099" class="hover:text-white focus-ring rounded">(02) 8859 9099</a></li>
+        <li><a href="mailto:info@swifteuc.com.au" class="hover:text-white focus-ring rounded">info@swifteuc.com.au</a></li>
+        <li>G38, 32 Civic Way, Rouse Hill NSW 2155</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
+      <p>© 2026 SWIFT Emergency & Urgent Care. All rights reserved.</p>
+      <p>Life-threatening emergency? Call 000.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var bottomBtn = document.getElementById('bottomMenuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    var triggers = bottomBtn ? [btn, bottomBtn] : [btn];
+
+    function closeMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (bottomBtn) bottomBtn.classList.remove('text-teal700');
+      menu.classList.remove('is-open');
+    }
+    function openMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'true'); });
+      if (bottomBtn) bottomBtn.classList.add('text-teal700');
+      menu.classList.add('is-open');
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+    });
+    menu.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+</script>
+</body>
+</html>
