@@ -25,6 +25,7 @@
     { page: 'index.html', target: q('#services'), title: 'Services', body: 'Each tile opens that service on the Services page.' },
     { page: 'index.html', target: q('#fees'), title: 'Fees at a glance', body: 'The main fee up front, with a link to the full fee schedule.' },
     { page: 'index.html', target: q('#doctors'), title: 'Our doctors', body: 'The clinic’s leaders, with a link to the full team.' },
+    { page: 'index.html', target: q('#facilities'), title: 'Our clinic facilities', body: 'Real photos of the Rouse Hill clinic. More can be added as they come in.' },
     { page: 'index.html', target: q('#location'), title: 'Location', body: 'Address, hours and a map, with one-tap directions.' },
     { page: 'index.html', target: q('#faq'), title: 'Common questions', body: 'Short answers to what patients ask most.' },
     { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Swaps the hero for seasonal campaigns, like flu season or school holidays. Not shown to patients.' },
