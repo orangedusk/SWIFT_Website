@@ -16,7 +16,7 @@
     { page: 'index.html', title: 'Welcome to the new SWIFT website', body: 'This tour walks through each feature and page. Use Next or your arrow keys, and press Esc to leave at any time.' },
     { page: 'index.html', target: q('div.sticky.bg-urgent'), title: 'Emergency banner', body: 'Stays at the top of every page. One tap calls 000.' },
     { page: 'index.html', target: q('header'), title: 'Header', body: 'Stays in view as you scroll, with the clinic’s number and a Request appointment button on every page.' },
-    { page: 'index.html', target: function () { var h = document.getElementById('heroHeadline'); return h && h.closest('section'); }, title: 'Hero', body: 'Opens with the question patients actually have, and answers it right there. Call and directions are one tap away.' },
+    { page: 'index.html', target: function () { var h = document.getElementById('heroHeadline'); return h && h.closest('section'); }, title: 'Hero', body: 'A full-width photo with SWIFT\'s promise, plus call and directions. Seasonal campaigns take over this space.' },
     { page: 'index.html', target: function () { var s = document.getElementById('openStatus'); return s && s.parentElement; }, title: 'Live opening status', body: 'Checks the time in Sydney and shows whether the clinic is open right now.' },
     { page: 'index.html', target: q('#careFinder'), title: 'Is urgent care right for me?', body: 'Visitors search a symptom or tap a common one. The answer tells them to call 000, come to SWIFT, or see their GP.' },
     { page: 'index.html', target: q('#right-care'), title: 'Three ways to get care', body: 'The urgency scale runs from most to least urgent, with one column for each. Anything serious always points to 000 first, and the 000 column never fades.' },
